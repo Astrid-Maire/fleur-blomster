@@ -1,26 +1,128 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --mørkegrøn: rgb(151, 168, 138);
+  --knapfarve: rgb(185, 210, 166);
+  --blomsterfarve: rgb(211, 221, 202);
+  --lysegrøn: rgb(232, 237, 227);
+  --baggrundsfarve: rgb(251, 249, 240);
+  --tekstfarve: rgb(50, 49, 49);
+  --hvid: rgb(248, 248, 248);
+}
+
+:root {
+  --step--2: clamp(0.2745rem, 0.1344rem + 0.7004vw, 0.7035rem);
+  --step--1: clamp(0.2929rem, 0.0823rem + 1.0528vw, 0.9377rem);
+  --step-0: clamp(0.3125rem, 0.0064rem + 1.5306vw, 1.25rem);
+  --step-1: clamp(0.3334rem, -0.1018rem + 2.176vw, 1.6663rem);
+  --step-2: clamp(0.3558rem, -0.2533rem + 3.0454vw, 2.2211rem);
+  --step-3: clamp(0.3796rem, -0.4632rem + 4.2141vw, 2.9607rem);
+  --step-4: clamp(0.405rem, -0.7514rem + 5.7822vw, 3.9467rem);
+  --step-5: clamp(0.4322rem, -1.1445rem + 7.8836vw, 5.2609rem);
+
+  --step-h2: clamp(1.5392rem, 0.5598rem + 4.8971vw, 4.5387rem);
+  --step-menu: clamp(1.043rem, 1.0046rem + 0.1921vw, 1.1607rem);
+  --step-h1: clamp(1.7523rem, -1.4538rem + 16.0306vw, 11.5711rem);
+}
+
+:root {
+  --space-3xs: clamp(0.0625rem, -0.0395rem + 0.5102vw, 0.375rem);
+  --space-2xs: clamp(0.1875rem, 0.0038rem + 0.9184vw, 0.75rem);
+  --space-xs: clamp(0.25rem, -0.0153rem + 1.3265vw, 1.0625rem);
+  --space-s: clamp(0.3125rem, -0.0548rem + 1.8367vw, 1.4375rem);
+  --space-m: clamp(0.5rem, -0.051rem + 2.7551vw, 2.1875rem);
+  --space-l: clamp(0.625rem, -0.1097rem + 3.6735vw, 2.875rem);
+  --space-xl: clamp(0.9375rem, -0.1645rem + 5.5102vw, 4.3125rem);
+  --space-2xl: clamp(1.25rem, -0.2194rem + 7.3469vw, 5.75rem);
+  --space-3xl: clamp(3.125rem, -0.5485rem + 18.3673vw, 14.375rem);
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --space-3xs: var(--space-3xs);
+  --space-2xs: var(--space-2xs);
+  --space-xs: var(--space-xs);
+  --space-s: var(--space-s);
+  --space-m: var(--space-m);
+  --space-l: var(--space-l);
+  --space-xl: var(--space-xl);
+  --space-2xl: var(--space-2xl);
+  --space-3xl: clamp(--space-3xl);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+@theme inline {
+  --mørkegrøn: var(--mørkegrøn);
+  --knapfarve: var(--knapfarve);
+  --blomsterfarve: var(--blomsterfarve);
+  --lysegrøn: var(--lysegrøn);
+  --baggrundsfarve: var(--baggrundsfarve);
+  --tekstfarve: var(--tekstfarve);
+  --hvid: var(--hvid);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--baggrundsfarve);
+  color: var(--tekstfarve);
+  font-family: "Libre Baskerville", serif;
+}
+
+h1 {
+  font-family: "Playfair Display", serif;
+  font-size: var(--step-h1);
+  font-weight: bold;
+}
+
+h2 {
+  font-size: var(--step-5);
+  padding: var(--space-xl) var(--space-xl) var(--space-l) var(--space-xl);
+}
+
+h3 {
+  font-size: var(--step-4);
+}
+
+h4 {
+  font-family: "Playfair Display", serif;
+  font-size: var(--step-3);
+}
+
+p {
+  font-family: "Poppins", sans-serif;
+  font-size: var(--step-0);
+}
+
+span {
+  font-family: "Poppins", sans-serif;
+  font-size: var(--step--1);
+  padding: 0 var(--space-m) 0 var(--space-m);
+}
+
+h2,
+h3,
+h5,
+h6 {
+  font-family: "Libre Baskerville", serif;
+  font-weight: bold;
+}
+
+.relative {
+  font-size: var(--step--menu);
+}
+
+.container {
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  gap: 30px;
+  box-sizing: border-box;
+}
+
+.paragraph {
+  flex: 1;
+  text-align: justify;
+  padding-bottom: var(--space-xl);
+}
+
+.container-1 {
+  padding: var(--space-xl) var(--space-xl) var(--space-l) var(--space-xl);
 }
