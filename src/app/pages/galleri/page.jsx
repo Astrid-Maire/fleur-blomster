@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Galleribilleder from "./components/Galleribilleder";
 
 export default function Home() {
   return (
@@ -27,6 +26,7 @@ export default function Home() {
         <h2 className="text-4xl font-bold text-[var(--tekstfarve)]">
           VELKOMMEN TIL <br /> FLEUR BLOMSTER
         </h2>
+
         <div class="container">
           <p class="paragraph">
             Hos os handler det om mere end blomster. Vi skaber personlige
@@ -45,7 +45,6 @@ export default function Home() {
             os til at dele vores passion for blomster med dig.
           </p>
         </div>
-        <Galleribilleder />
       </div>
     </>
   );

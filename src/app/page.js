@@ -6,6 +6,7 @@ import NewsletterForm from "./components/NewsletterForm";
 import Baggrundsbillede from "./components/Baggrundsbillede";
 import Scroll from "./components/Scroll";
 import Footer from "./components/Footer";
+import Galleri from "./components/Galleri";
 
 export default function Home() {
   const [showForm, setShowForm] = useState(false);
@@ -42,7 +43,7 @@ export default function Home() {
             <NewsletterForm onSuccess={() => setShowForm(false)} />
           </div>
         )}
-
+        <Galleri />
         <h2 className="text-4xl  mt-var(--space-2xs) ">
           VELKOMMEN TIL <br />
           <div className="block text-right">FLEUR BLOMSTER</div>
