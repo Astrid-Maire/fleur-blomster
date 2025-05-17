@@ -14,10 +14,7 @@ export default function ProductsPage() {
         />
 
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center w-full px-4">
-          <h1 className="w-full    font-bold mb-4">Fleur Blomster</h1>
-          <h4 className="text-lg sm:text-xl font-medium">
-            Trørdvej 67, 2950 Vedbæk, Danmark
-          </h4>
+          <h2 className="w-full    ">WEBSHOP TIL FLEUR BLOMSTER </h2>
         </div>
       </div>
 

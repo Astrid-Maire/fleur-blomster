@@ -1,51 +1,60 @@
 import Image from "next/image";
+import Fleurgalleri from "@/app/components/Fleurgalleri";
 
-export default function Home() {
+export default function FleurGalleriPage() {
   return (
     <>
       <div className="relative w-full h-screen">
         <Image
-          src="/images/g.svg"
-          alt="hovedbilledet på fleur blomster galleriside"
+          src="/images/gallerihovedbilledet.png"
+          alt="forsidens hovedbilledet for fleur blomster"
           fill
           className="object-cover"
           priority
         />
 
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center text-white">
-          <h1 className="text-4xl sm:text-6xl font-bold mb-4">
-            Fleur Blomster
-          </h1>
-          <h4 className="text-lg sm:text-xl font-medium">
-            Trørdvej 67, 2950 Vedbæk, Danmark
-          </h4>
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center w-full ">
+          <h2>GALLERI AF FLEUR BLOMSTER</h2>
         </div>
       </div>
 
       <div>
-        <h2 className="text-4xl font-bold text-[var(--tekstfarve)]">
-          VELKOMMEN TIL <br /> FLEUR BLOMSTER
+        <h2 className="text-4xl mt-var(--space-2xs)">
+          OPLEV VORES <br />
+          <div className="block text-right">SMUKKE BLOMSTER</div>
         </h2>
-
-        <div class="container">
-          <p class="paragraph">
-            Hos os handler det om mere end blomster. Vi skaber personlige
-            buketter og blomstrende oplevelser, der bringer glæde, nærvær og
-            skønhed ind i hverdagen. Hver blomst er nøje udvalgt, hver buket
-            bundet med kærlighed og tanke på dem, der skal modtage den. Uanset
-            om du leder efter en gave, noget smukt til dig selv eller blot
-            inspiration, glæder vi os til at dele vores passion med dig.
-          </p>
-          <p class="paragraph">
-            Vi er passionerede omkring at bringe naturens skønhed tættere på
-            dig. Hos os finder du ikke bare blomster, men inspiration til at
-            skabe magiske øjeblikke i dit liv. Uanset om du ønsker at forkæle
-            dig selv eller give en betænksom gave, er vi her for at hjælpe dig
-            med at vælge de perfekte blomster. Besøg os i Trørød, hvor vi glæder
-            os til at dele vores passion for blomster med dig.
-          </p>
+        <div className="flex container-2  justify-between gap-10 ">
+          <div className="flex-1  ">
+            <p className="  pb-[var(--space-s)]">
+              Velkommen til Fleurs galleri, hvor du kan opleve et udvalg af de
+              buketter, dekorationer og blomster-arrangementer, vi har skabt
+              gennem tiden. Hver enkelt opsætning er lavet med øje for detaljer,
+              farver og former, og altid med omtanke for den anledning, den skal
+              bruges til. Vi lægger stor vægt på at skabe personlige udtryk,
+              hvad enten det er til hverdag, fest eller en særlig begivenhed.
+            </p>
+            <p className="">
+              Galleriet er både en hyldest til vores håndværk og en
+              inspirationskilde for dig, der søger blomster med sjæl. Måske
+              finder du idéer til en gave, en bryllupsdekoration, en smuk afsked
+              eller bare en buket til at lyse hverdagen op. Hos Fleur handler
+              det om at skabe blomster, der rører noget i os og vi håber, du kan
+              mærke det i billederne.
+            </p>
+          </div>
+          <div className="flex-1 ">
+            <Image
+              src="/images/galleri.png"
+              alt="billeder af fleur blomsters bukter"
+              width={600}
+              height={400}
+              layout="responsive"
+            />
+          </div>
         </div>
       </div>
+
+      <Fleurgalleri />
     </>
   );
 }

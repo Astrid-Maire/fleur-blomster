@@ -1,4 +1,9 @@
+"use client"; // Sørg for at denne fil er en client component
+
 import Image from "next/image";
+import BagrundsbilledetOm from "@/app/components/BagrundsbilledetOm";
+import Info from "@/app/components/Info";
+import Kort from "@/app/components/Kort";
 
 export default function Home() {
   return (
@@ -12,22 +17,18 @@ export default function Home() {
           priority
         />
 
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center text-white">
-          <h1 className="text-4xl sm:text-6xl font-bold mb-4">
-            Fleur Blomster
-          </h1>
-          <h4 className="text-lg sm:text-xl font-medium">
-            Trørdvej 67, 2950 Vedbæk, Danmark
-          </h4>
+        <div className="absolute top-4/10 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center w-full">
+          <h2 className="text-4xl mb-4">OM FLEUR BLOMSTER</h2>
         </div>
       </div>
 
       <div>
-        <h2 className="text-4xl font-bold text-[var(--tekstfarve)]">
-          VELKOMMEN TIL <br /> FLEUR BLOMSTER
-        </h2>
-        <div class="container">
-          <p class="paragraph">
+        <h3 className="p-[var(--space-xl)] pb-[var(--space-l)]">
+          FLEUR BLOMSTER SKABER <br />
+          <div className="block text-right"> SMUKKE ØJEBLIKKE </div>
+        </h3>
+        <div className="container">
+          <p className="paragraph">
             Hos os handler det om mere end blomster. Vi skaber personlige
             buketter og blomstrende oplevelser, der bringer glæde, nærvær og
             skønhed ind i hverdagen. Hver blomst er nøje udvalgt, hver buket
@@ -35,7 +36,7 @@ export default function Home() {
             om du leder efter en gave, noget smukt til dig selv eller blot
             inspiration, glæder vi os til at dele vores passion med dig.
           </p>
-          <p class="paragraph">
+          <p className="paragraph">
             Vi er passionerede omkring at bringe naturens skønhed tættere på
             dig. Hos os finder du ikke bare blomster, men inspiration til at
             skabe magiske øjeblikke i dit liv. Uanset om du ønsker at forkæle
@@ -45,6 +46,9 @@ export default function Home() {
           </p>
         </div>
       </div>
+      <BagrundsbilledetOm />
+      <Info />
+      <Kort />
     </>
   );
 }

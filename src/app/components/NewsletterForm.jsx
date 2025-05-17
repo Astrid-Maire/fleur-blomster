@@ -1,4 +1,5 @@
 "use client";
+
 import { useState } from "react";
 import { createClient } from "@supabase/supabase-js";
 
@@ -27,7 +28,7 @@ export default function NewsletterForm({ onSuccess }) {
       return;
     }
 
-    const { data, error } = await supabase.from("newsletter_signups").insert([
+    const { error } = await supabase.from("newsletter_signups").insert([
       {
         name: formData.name,
         email: formData.email,
@@ -35,15 +36,11 @@ export default function NewsletterForm({ onSuccess }) {
     ]);
 
     if (error) {
+      console.error("Supabase insert error:", error);
       setError("Noget gik galt. Prøv igen senere.");
     } else {
       setFormData({ name: "", email: "" });
-      if (onSuccess) onSuccess(); // luk formular eller vis tak-besked
-    }
-
-    if (error) {
-      console.error("Supabase insert error:", error); // tilføj denne linje
-      setError("Noget gik galt. Prøv igen senere.");
+      if (onSuccess) onSuccess();
     }
 
     setLoading(false);
@@ -52,36 +49,43 @@ export default function NewsletterForm({ onSuccess }) {
   return (
     <form
       onSubmit={handleSubmit}
-      className="bg-white p-6 rounded-xl shadow-md max-w-md mx-auto"
+      className="fixed inset-0 z-[1000] flex justify-center items-center p-[var(--space-m)] px-[var(--space-l)] max-w-md mx-auto rounded-xl shadow-md bg-[url('/images/blomster.svg')] bg-no-repeat bg-center bg-contain bg-opacity-80"
+      style={{ height: "87%" }}
     >
-      <h3 className="text-xl font-bold mb-4">Nyhedsbrev for Fleur Blomster</h3>
+      <div className="w-full">
+        <h6 className="text-xl font-bold mb-4 text-center">
+          Nyhedsbrev for Fleur Blomster
+        </h6>
 
-      {error && <p className="text-red-600 mb-3">{error}</p>}
+        {error && <p className="text-red-600 mb-3">{error}</p>}
 
-      <input
-        type="text"
-        name="name"
-        placeholder="Dit navn"
-        value={formData.name}
-        onChange={handleChange}
-        className="w-full p-2 mb-3 border rounded-md"
-      />
-      <input
-        type="email"
-        name="email"
-        placeholder="Din email"
-        value={formData.email}
-        onChange={handleChange}
-        className="w-full p-2 mb-4 border rounded-md"
-      />
+        <input
+          type="text"
+          name="name"
+          placeholder="Dit navn"
+          value={formData.name}
+          onChange={handleChange}
+          className="w-full p-2 mb-3 border rounded-md"
+          disabled={loading}
+        />
+        <input
+          type="email"
+          name="email"
+          placeholder="Din email"
+          value={formData.email}
+          onChange={handleChange}
+          className="w-full p-2 mb-4 border rounded-md"
+          disabled={loading}
+        />
 
-      <button
-        type="submit"
-        disabled={loading}
-        className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 w-full"
-      >
-        {loading ? "Sender..." : "Tilmeld"}
-      </button>
+        <button
+          type="submit"
+          disabled={loading}
+          className="w-full bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 disabled:opacity-50"
+        >
+          {loading ? "Sender..." : "Tilmeld"}
+        </button>
+      </div>
     </form>
   );
 }

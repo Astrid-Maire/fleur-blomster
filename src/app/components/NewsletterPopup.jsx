@@ -26,10 +26,10 @@ const NewsletterPopup = ({ onClose, onSubscribe }) => {
   if (!isVisible) return null;
 
   return (
-    <div className="fixed inset-0 flex items-center justify-center z-50 px-[var(--space-3xl)]">
-      <div className="bg-[var(--lysegrøn)] p-[var(--space-s)] text-center  w-full ">
-        <h3 className=" font-bold ">Tilmeld dig vores nyhedsbrev</h3>
-        <p className="pr-[var(--space-xs)] pl-[var(--space-xs)]">
+    <div className="fixed h-[87%] inset-0 z-[1000] flex  justify-center px-[var(--space-l)] p-[var(--space-m)] bg-[url('/images/blomster.svg')] bg-no-repeat bg-center   bg-opacity-80">
+      <div className=" max-w-3xl rounded-xl  text-center  ">
+        <h6 className="text-4xl ">Tilmeld dig vores nyhedsbrev</h6>
+        <p className="px-[var(--space-xs)] pt-[var(--space-xs)] ">
           Hos Fleur Blomster brænder vi for at dele vores kærlighed til blomster
           med dig. Når du tilmelder dig vores nyhedsbrev, får du adgang til
           sæsonens smukkeste buketter, inspirerende idéer og nyttige tips til
@@ -38,22 +38,19 @@ const NewsletterPopup = ({ onClose, onSubscribe }) => {
           nyhedsbrevsmodtager er du også blandt de første til at få nyheder om
           kommende events og eksklusive tilbud.
         </p>
-        <p className="p-[var(--space-xs)]">
+        <p className="pt-[var(--space-s)] pb-[var(--space-s)] px-[var(--space-s)]">
           Tilmeld dig i dag og lad os bringe naturens skønhed direkte ind i din
           hverdag – fyldt med farver, inspiration og glæde.
         </p>
-        <div className="flex justify-center gap-4">
-          <button
-            onClick={handleSubscribe}
-            className="bg-[var(--knapfarve)]  px-4 py-2 rounded-lg hover:bg-blue-700"
-          >
-            Ja tak!
-          </button>
+        <div className="flex justify-center gap-4 mt-4">
           <button
             onClick={handleClose}
             className="bg-gray-300 text-gray-800 px-4 py-2 rounded-lg hover:bg-gray-400"
           >
             Måske senere
+          </button>
+          <button onClick={handleSubscribe} className="min-knap">
+            Ja tak
           </button>
         </div>
       </div>

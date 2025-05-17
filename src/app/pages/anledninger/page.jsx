@@ -13,7 +13,7 @@ export default function Home() {
         />
 
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center w-full px-4">
-          <h2 className="w-full font-bold ">Webshop til Fleur blomster</h2>
+          <h2 className="w-full font-bold ">WEBSHOP TIL FLEUR BLOMSTER</h2>
         </div>
       </div>
 

@@ -5,8 +5,6 @@ import NewsletterPopup from "./components/NewsletterPopup";
 import NewsletterForm from "./components/NewsletterForm";
 import Baggrundsbillede from "./components/Baggrundsbillede";
 import Scroll from "./components/Scroll";
-import Footer from "./components/Footer";
-import Galleri from "./components/Galleri";
 
 export default function Home() {
   const [showForm, setShowForm] = useState(false);
@@ -24,7 +22,7 @@ export default function Home() {
         />
 
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center w-full px-4">
-          <h1 className="font-bold text-4xl mb-4">Fleur Blomster</h1>
+          <h1 className="">Fleur Blomster</h1>
           <h4 className="text-lg sm:text-xl font-medium">
             Trørdvej 67, 2950 Vedbæk, Danmark
           </h4>
@@ -43,7 +41,6 @@ export default function Home() {
             <NewsletterForm onSuccess={() => setShowForm(false)} />
           </div>
         )}
-        <Galleri />
         <h2 className="text-4xl  mt-var(--space-2xs) ">
           VELKOMMEN TIL <br />
           <div className="block text-right">FLEUR BLOMSTER</div>
@@ -97,7 +94,6 @@ export default function Home() {
             <h3 className="text-xl font-bold mb-2">Tilmeld dig nyhedsbrevet</h3>
           </div>
         )}
-        <Footer />
       </div>
     </>
   );
