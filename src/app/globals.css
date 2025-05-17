@@ -11,11 +11,12 @@
 }
 
 :root {
-  --step--2: clamp(0.2745rem, 0.1344rem + 0.7004vw, 0.7035rem);
+  --step--2: clamp(0.2929rem, 0.0823rem + 1.0528vw, 1.1rem);
   --step--1: clamp(0.2929rem, 0.0823rem + 1.0528vw, 0.9377rem);
   --step-0: clamp(0.3125rem, 0.0064rem + 1.5306vw, 1.25rem);
   --step-1: clamp(0.3334rem, -0.1018rem + 2.176vw, 1.6663rem);
   --step-2: clamp(0.3558rem, -0.2533rem + 3.0454vw, 2.2211rem);
+  --step-33: clamp(0.3796rem, -0.4632rem + 4.2141vw, 2.5rem);
   --step-3: clamp(0.3796rem, -0.4632rem + 4.2141vw, 2.9607rem);
   --step-4: clamp(0.405rem, -0.7514rem + 5.7822vw, 4.467rem);
   --step-5: clamp(0.4322rem, -1.1445rem + 7.8836vw, 5.2609rem);
@@ -33,6 +34,7 @@
   --space-l: clamp(0.625rem, -0.1097rem + 3.6735vw, 2.875rem);
   --space-xl: clamp(0.9375rem, -0.1645rem + 5.5102vw, 4.3125rem);
   --space-2xl: clamp(1.25rem, -0.2194rem + 7.3469vw, 5.75rem);
+  --space-22xl: clamp(1.25rem, -0.2194rem + 14.3469vw, 10rem);
   --space-3xl: clamp(3.125rem, -0.5485rem + 18.3673vw, 14.375rem);
 }
 
@@ -91,8 +93,13 @@ h5 {
 }
 
 h6 {
-  font-size: var(--step-3);
+  font-size: var(--step-33);
   font-weight: bold;
+}
+
+.h7 {
+  font-size: var(--step--2);
+  font-family: "Poppins", sans-serif;
 }
 
 p,

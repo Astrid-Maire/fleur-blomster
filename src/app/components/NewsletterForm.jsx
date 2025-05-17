@@ -1,5 +1,4 @@
 "use client";
-
 import { useState } from "react";
 import { createClient } from "@supabase/supabase-js";
 
@@ -28,7 +27,7 @@ export default function NewsletterForm({ onSuccess }) {
       return;
     }
 
-    const { error } = await supabase.from("newsletter_signups").insert([
+    const { data, error } = await supabase.from("newsletter_signups").insert([
       {
         name: formData.name,
         email: formData.email,
@@ -49,39 +48,43 @@ export default function NewsletterForm({ onSuccess }) {
   return (
     <form
       onSubmit={handleSubmit}
-      className="fixed inset-0 z-[1000] flex justify-center items-center p-[var(--space-m)] px-[var(--space-l)] max-w-md mx-auto rounded-xl shadow-md bg-[url('/images/blomster.svg')] bg-no-repeat bg-center bg-contain bg-opacity-80"
-      style={{ height: "87%" }}
+      className="
+        fixed h-[75%] inset-0 z-[1000] flex  justify-center px-[var(--space-l)] p-[var(--space-m)] bg-[url('/images/blomster.svg')] bg-no-repeat bg-center   bg-opacity-80"
     >
-      <div className="w-full">
-        <h6 className="text-xl font-bold mb-4 text-center">
-          Nyhedsbrev for Fleur Blomster
+      <div className="   rounded-xl  text-center  ">
+        <h6 className="text-4xl pb-[var(--space-l)] w-full pt-[var(--space-l)]">
+          Tilmeld dig vores nyhedsbrev
         </h6>
 
         {error && <p className="text-red-600 mb-3">{error}</p>}
-
-        <input
-          type="text"
-          name="name"
-          placeholder="Dit navn"
-          value={formData.name}
-          onChange={handleChange}
-          className="w-full p-2 mb-3 border rounded-md"
-          disabled={loading}
-        />
-        <input
-          type="email"
-          name="email"
-          placeholder="Din email"
-          value={formData.email}
-          onChange={handleChange}
-          className="w-full p-2 mb-4 border rounded-md"
-          disabled={loading}
-        />
-
+        <div className="px-[var(--space-22xl)] max-w-3xl">
+          <div className="pb-[var(--space-s)]">
+            <input
+              type="text"
+              name="name"
+              placeholder="Dit navn"
+              value={formData.name}
+              onChange={handleChange}
+              className="w-full p-2 mb-3 border rounded-md  px-[var(--space-m)]"
+            />
+          </div>
+          <div className="pb-[var(--space-s)]">
+            <input
+              type="email"
+              name="email"
+              placeholder="Din email"
+              value={formData.email}
+              onChange={handleChange}
+              className="w-full p-2 mb-4 border rounded-md px-[var(--space-m)]"
+            />
+          </div>
+        </div>
         <button
           type="submit"
           disabled={loading}
-          className="w-full bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 disabled:opacity-50"
+          className="
+            min-knap
+          "
         >
           {loading ? "Sender..." : "Tilmeld"}
         </button>
