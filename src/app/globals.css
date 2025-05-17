@@ -20,7 +20,7 @@
   --step-3: clamp(0.3796rem, -0.4632rem + 4.2141vw, 2.9607rem);
   --step-4: clamp(0.405rem, -0.7514rem + 5.7822vw, 4.467rem);
   --step-5: clamp(0.4322rem, -1.1445rem + 7.8836vw, 5.2609rem);
-  --step-h2: clamp(1.5392rem, 0.5598rem + 4.8971vw, 4.5387rem);
+  --step-h2: clamp(1.5392rem, 0.5598rem + 4.8971vw, 4.4387rem);
   --step-menu: clamp(1.043rem, 1.0046rem + 0.1921vw, 1.1607rem);
   --step-h1: clamp(1.7523rem, -1.4538rem + 16.0306vw, 11.5711rem);
 }
@@ -196,7 +196,7 @@ h6 {
   grid-template-columns: repeat(12, 1fr);
   grid-auto-rows: 100px;
   gap: 1rem;
-  padding: 0 var(--space-xl) var(--space-l) var(--space-xl);
+  padding: 0 var(--space-xl) 1rem var(--space-xl);
   position: relative;
   z-index: 1;
 }
@@ -267,4 +267,28 @@ h6 {
 .item-15 {
   grid-column: 5 / 7;
   grid-row: 12/13;
+}
+.item-16 {
+  grid-column: 9 / 13;
+  grid-row: 23/26;
+}
+.item-17 {
+  grid-column: 1 /6;
+  grid-row: 26/29;
+}
+.item-18 {
+  grid-column: 1 / 4;
+  grid-row: 23/26;
+}
+.item-19 {
+  grid-column: 4 /8;
+  grid-row: 23/26;
+}
+.item-20 {
+  grid-column: 11 / 13;
+  grid-row: 26/29;
+}
+.item-21 {
+  grid-column: 6 /11;
+  grid-row: 26/29;
 }

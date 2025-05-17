@@ -16,6 +16,12 @@ const images = {
   13: "/images/FleurGalleri/FleurGalleri13.png",
   14: "/images/FleurGalleri/FleurGalleri14.png",
   15: "/images/FleurGalleri/FleurGalleri15.JPG",
+  16: "/images/FleurGalleri/FleurGalleri16.JPG",
+  17: "/images/FleurGalleri/FleurGalleri17.png",
+  18: "/images/FleurGalleri/FleurGalleri18.JPG",
+  19: "/images/FleurGalleri/FleurGalleri19.JPG",
+  20: "/images/FleurGalleri/FleurGalleri20.JPG",
+  21: "/images/FleurGalleri/FleurGalleri22.JPG",
 };
 
 export default function FleurGalleri() {

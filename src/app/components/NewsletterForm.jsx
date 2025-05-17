@@ -22,7 +22,7 @@ export default function NewsletterForm({ onSuccess }) {
     setError("");
 
     if (!formData.name || !formData.email) {
-      setError("Udfyld venligst både navn og email.");
+      setError("Du skal venligst udfyld både navn og email.");
       setLoading(false);
       return;
     }
@@ -52,7 +52,7 @@ export default function NewsletterForm({ onSuccess }) {
         fixed h-[75%] inset-0 z-[1000] flex  justify-center px-[var(--space-l)] p-[var(--space-m)] bg-[url('/images/blomster.svg')] bg-no-repeat bg-center   bg-opacity-80"
     >
       <div className="   rounded-xl  text-center  ">
-        <h6 className="text-4xl pb-[var(--space-l)] w-full pt-[var(--space-l)]">
+        <h6 className="text-4xl pb-[var(--space-xl)] w-full pt-[var(--space-m)]">
           Tilmeld dig vores nyhedsbrev
         </h6>
 

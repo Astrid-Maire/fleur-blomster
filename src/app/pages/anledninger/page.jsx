@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Anledningbilleder from "@/app/components/Anledningbilleder";
 
 export default function Home() {
   return (
@@ -20,8 +21,8 @@ export default function Home() {
       <div className="p-6">
         <h2 className="text-4xl  mt-var(--space-2xs) ">
           {" "}
-          Blomster til en hver <br />
-          <div className="block text-right">Anledning</div>
+          BLOMSTER TIL EN <br />
+          <div className="block text-right">HVER ANLEDNING</div>
         </h2>
         <div class="container">
           <p class="paragraph">
@@ -41,6 +42,7 @@ export default function Home() {
           </p>
         </div>
       </div>
+      <Anledningbilleder />
     </>
   );
 }
