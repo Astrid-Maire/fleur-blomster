@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Fleurgalleri from "@/app/components/Fleurgalleri";
-import Anledningbilleder from "@/app/components/Anledningbilleder";
+import Begraves from "@/app/components/Begarves";
 
 export default function FleurGalleriPage() {
   return (
@@ -56,7 +56,7 @@ export default function FleurGalleriPage() {
       </div>
 
       <Fleurgalleri />
-      <Anledningbilleder />
+      <Begraves />
     </>
   );
 }

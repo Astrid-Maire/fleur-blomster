@@ -58,7 +58,6 @@ export default function InspirationSection() {
               />
             </motion.div>
 
-            {/* Billede M - forskudt mere til venstre og længere nede */}
             <motion.div
               initial={{ opacity: 0, y: 50 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -73,7 +72,6 @@ export default function InspirationSection() {
               />
             </motion.div>
 
-            {/* Billede S - til højre og lidt lavere */}
             <motion.div
               initial={{ opacity: 0, y: 50 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
