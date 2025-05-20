@@ -12,7 +12,7 @@ export default function Home() {
 
   return (
     <>
-      <div className="relative w-full h-screen">
+      <div className="relative w-full h-[60vh] sm:h-[70vh] md:h-screen">
         <Image
           src="/images/forsidehovedbilledet.png"
           alt="forsidens hovedbilledet for fleur blomster"

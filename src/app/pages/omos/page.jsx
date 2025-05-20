@@ -8,7 +8,7 @@ import Kort from "@/app/components/Kort";
 export default function Home() {
   return (
     <>
-      <div className="relative w-full h-screen">
+      <div className="relative w-full h-[60vh] sm:h-[70vh] md:h-screen">
         <Image
           src="/images/omoshovedbilledet.png"
           alt="hovedbilledet på Om fleur blomster"
@@ -17,8 +17,8 @@ export default function Home() {
           priority
         />
 
-        <div className="absolute top-4/10 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center w-full">
-          <h2 className="text-4xl mb-4">OM FLEUR BLOMSTER</h2>
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center w-full px-4">
+          <h2 className="">OM FLEUR BLOMSTER </h2>
         </div>
       </div>
 

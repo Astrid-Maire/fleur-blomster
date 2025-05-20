@@ -1,48 +1,54 @@
-import React, { useEffect, useState } from "react";
+"use client";
 
-const API_URL = "https://xraaztpjtcujqbtvczfb.supabase.co/rest/v1/products";
-const API_KEY =
+import React, { useEffect, useState } from "react";
+import { createClient } from "@supabase/supabase-js";
+
+// Supabase opsætning
+const SUPABASE_URL = "https://xraaztpjtcujqbtvczfb.supabase.co";
+const SUPABASE_KEY =
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhyYWF6dHBqdGN1anFidHZjemZiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDY0NDM1NDEsImV4cCI6MjA2MjAxOTU0MX0.mGlP9vpADg4GTzzvNWy9jM8UQOfe-JKbH-o66kLKKoA";
 
-const Produkter = () => {
-  const [products, setProducts] = useState([]);
+const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
+
+export default function Produkter({ id }) {
+  const [blomst, setBlomst] = useState(null);
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch(API_URL, {
-      headers: {
-        apikey: API_KEY,
-        Authorization: `Bearer ${API_KEY}`,
-      },
-    })
-      .then((res) => res.json())
-      .then(setProducts)
-      .catch((err) => console.error("Fejl ved hentning:", err));
-  }, []);
+    async function hentBlomst() {
+      const { data, error } = await supabase
+        .from("fleurblomster")
+        .select("*")
+        .eq("id", id)
+        .single();
+
+      if (error) setError(error.message);
+      else setBlomst(data);
+
+      setLoading(false);
+    }
+
+    if (id) {
+      hentBlomst();
+    }
+  }, [id]);
+
+  if (loading) return <p className="text-center mt-10">Indlæser...</p>;
+  if (error)
+    return <p className="text-center mt-10 text-red-600">Fejl: {error}</p>;
+  if (!blomst) return <p className="text-center mt-10">Blomst ikke fundet</p>;
 
   return (
-    <div className="min-h-screen bg-gray-100 p-8">
-      <h1 className="text-4xl font-bold mb-8 text-center">🛍️ Produkter</h1>
-      <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
-        {products.map((product) => (
-          <div
-            key={product.id}
-            className="bg-white rounded-2xl shadow-md p-4 hover:shadow-lg transition"
-          >
-            {product.image_url && (
-              <img
-                src={product.image_url}
-                alt={product.name}
-                className="w-full h-48 object-cover rounded-xl mb-4"
-              />
-            )}
-            <h2 className="text-xl font-semibold">{product.name}</h2>
-            <p className="text-gray-600">{product.description}</p>
-            <p className="text-green-600 font-bold mt-2">{product.price} kr</p>
-          </div>
-        ))}
-      </div>
+    <div className="max-w-3xl mx-auto p-6">
+      <img
+        src={blomst.images}
+        alt={blomst.name}
+        className="w-full h-96 object-cover rounded-lg mb-6"
+      />
+      <h1 className="text-3xl font-bold mb-4">{blomst.name}</h1>
+      <p className="text-gray-700 mb-4">{blomst.description}</p>
+      <p className="text-xl font-semibold text-pink-600">{blomst.price_m} kr</p>
     </div>
   );
-};
-
-export default Produkter;
+}
