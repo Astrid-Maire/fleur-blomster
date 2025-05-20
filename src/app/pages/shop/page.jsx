@@ -1,4 +1,4 @@
-import Category from "@/app/components/Category";
+import Produkter from "@/app/components/Produkter";
 import Image from "next/image";
 
 export default function ProductsPage() {
@@ -19,7 +19,7 @@ export default function ProductsPage() {
       </div>
 
       <div>
-        <Category />
+        <Produkter />
       </div>
     </>
   );

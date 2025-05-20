@@ -5,7 +5,7 @@ import { IoStarOutline } from "react-icons/io5";
 
 export default async function ProductPage({ params }) {
   const id = (await params).id;
-  let response = await fetch(`https://dummyjson.com/products/${id}`);
+  let response = await fetch(`https://xraaztpjtcujqbtvczfb.supabase.co/${id}`);
   let product = await response.json();
 
   return (
