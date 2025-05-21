@@ -3,11 +3,11 @@ import { useState } from "react";
 import Link from "next/link";
 
 const links = [
-  { href: "/", label: "Forside" },
-  { href: "/pages/galleri", label: "Galleri" },
-  { href: "/pages/shop", label: "Shop" },
-  { href: "/pages/anledninger", label: "Anledninger" },
-  { href: "/pages/omos", label: "Om os" },
+  { href: "/", label: "FORSIDE" },
+  { href: "/pages/galleri", label: "GALLERI" },
+  { href: "/pages/shop", label: "SHOP " },
+  { href: "/pages/anledninger", label: "ANLEDNINGER" },
+  { href: "/pages/omos", label: "OM OS" },
 ];
 
 export default function Header() {

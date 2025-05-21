@@ -1,45 +1,67 @@
+"use client";
+import { useState } from "react";
+import Category from "@/app/components/Category";
+import Filter from "@/app/components/Filter";
 import Produkter from "@/app/components/Produkter";
 import Image from "next/image";
 
 export default function ProductsPage() {
+  const [selectedCategory, setSelectedCategory] = useState("alle");
+
   return (
     <>
       <div className="relative w-full h-[60vh] sm:h-[70vh] md:h-screen">
         <Image
           src="/images/shophovedbilledet.png"
-          alt="Hhovedbilledet på shoping side for fleur blomster"
+          alt="Hovedbilledet på shopping side for Fleur Blomster"
           fill
           className="object-cover"
           priority
         />
 
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center w-full ">
-          <h2>WEBSHOP TIL FLEUR BLOMSTER</h2>
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center w-full">
+          <h2 className="text-4xl font-bold text-white">
+            WEBSHOP TIL FLEUR BLOMSTER
+          </h2>
         </div>
       </div>
-      <h2 className="text-4xl  mt-var(--space-2xs) ">
-        WEBSHOP TIL <br />
-        <div className="block text-right">FLEUR BLOMSTER</div>
-      </h2>
-      <div className="container">
-        <p class="paragraph">
-          Velkommen til vores webshop, hvor du nemt kan bestille smukke buketter
-          og blomsterdekorationer online. Vi har samlet et udvalg af vores mest
-          populære og sæsonaktuelle kreationer, så du hurtigt kan finde den
-          rette hilsen til enhver anledning. Hver buket bliver håndbundet med
-          omhu og leveret frisk, som var den hentet direkte i butikken. Uanset
-          om du vil glæde en, du holder af, sende en varm tanke eller forkæle
-          dig selv, gør vi det let for dig at sprede blomstrende glæde.
-        </p>
-        <p class="paragraph">
-          Hos Fleur hjælper vi dig med at vælge farver der passer til
-          anledningen, eller vi sammensætter en buket i smukke harmoniske toner
-          for dig.
-        </p>
-      </div>
 
+      <div className="px-px-space-xl">
+        <h2 className="text-4xl ">
+          WEBSHOP TIL <br />
+          <span className="block text-right">FLEUR BLOMSTER</span>
+        </h2>
+
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full items-start">
+            <div className="w-full">
+              <p className="paragraph1 text-base leading-relaxed">
+                Velkommen til vores webshop, hvor du nemt kan bestille smukke
+                buketter og blomsterdekorationer online. Vi har samlet et udvalg
+                af vores mest populære og sæsonaktuelle kreationer, så du
+                hurtigt kan finde den rette hilsen til enhver anledning. Hver
+                buket bliver håndbundet med omhu og leveret frisk, som var den
+                hentet direkte i butikken.
+              </p>
+            </div>
+
+            <div className="w-full">
+              <p className="paragraph1 text-base leading-relaxed mb-4">
+                Hos Fleur hjælper vi dig med at vælge farver der passer til
+                anledningen, eller vi sammensætter en buket i smukke harmoniske
+                toner for dig.
+              </p>
+
+              <Filter
+                selected={selectedCategory}
+                onChange={setSelectedCategory}
+              />
+            </div>
+          </div>
+        </div>
+      </div>
       <div>
-        <Produkter />
+        <Produkter selectedCategory={selectedCategory} />
       </div>
     </>
   );

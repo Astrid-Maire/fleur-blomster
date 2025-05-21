@@ -15,8 +15,9 @@
   --step--1: clamp(0.2929rem, 0.0823rem + 1.0528vw, 0.9377rem);
   --step-0: clamp(0.3125rem, 0.0064rem + 1.5306vw, 1.25rem);
   --step-1: clamp(0.3334rem, -0.1018rem + 2.176vw, 1.6663rem);
+  --step-15: clamp(0.3334rem, -0.1018rem + 2.176vw, 2rem);
   --step-2: clamp(0.3558rem, -0.2533rem + 3.0454vw, 2.2211rem);
-  --step-33: clamp(0.3796rem, -0.4632rem + 4.2141vw, 2.5rem);
+  --step-35: clamp(0.3796rem, -0.4632rem + 4.2141vw, 2.5rem);
   --step-3: clamp(0.3796rem, -0.4632rem + 4.2141vw, 2.9607rem);
   --step-4: clamp(0.405rem, -0.7514rem + 5.7822vw, 4.467rem);
   --step-5: clamp(0.4322rem, -1.1445rem + 7.8836vw, 5.2609rem);
@@ -93,13 +94,18 @@ h5 {
 }
 
 h6 {
-  font-size: var(--step-33);
+  font-size: var(--step-35);
   font-weight: bold;
 }
 
 .h7 {
   font-size: var(--step--2);
   font-family: "Poppins", sans-serif;
+}
+
+.h8 {
+  font-size: var(--step-15);
+  font-family: "Libre Baskerville", serif;
 }
 
 p,
@@ -124,6 +130,7 @@ h6 {
 
 .relative {
   font-size: var(--step--menu);
+  font-family: "Libre Baskerville", serif;
 }
 
 .container {

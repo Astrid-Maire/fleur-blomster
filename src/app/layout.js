@@ -1,10 +1,18 @@
 import "./globals.css";
 import Header from "@/app/components/Header";
 import Footer from "./components/Footer";
+import { KurvProvider } from "./components/KurvContext";
+import KurvIkon from "./components/KurvIkon";
+import KurvMedBetal from "./components/KurvMedBetal";
+
+export const metadata = {
+  title: "Min Blomsterbutik",
+  description: "Smukke blomster til alle lejligheder",
+};
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="da">
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
@@ -18,9 +26,13 @@ export default function RootLayout({ children }) {
         />
       </head>
       <body className="antialiased">
-        <Header />
-        {children}
-        <Footer />
+        <KurvProvider>
+          <Header />
+          {children}
+          <KurvIkon />
+          <KurvMedBetal />
+          <Footer />
+        </KurvProvider>
       </body>
     </html>
   );
