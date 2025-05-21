@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Back1 from "@/app/components/Back1";
 
 export default function Betaling() {
   return (
@@ -7,7 +8,6 @@ export default function Betaling() {
       style={{
         backgroundImage: "url('/images/blomster1.svg')",
         backgroundRepeat: "no-repeat",
-        backgroundPosition: "center",
         backgroundSize: "cover",
         height: "100vh",
         display: "flex",
@@ -17,8 +17,9 @@ export default function Betaling() {
         gap: "1rem",
       }}
     >
+      <Back1 />
       <h3 className="text-center">Betalingsside</h3>
-      <p className="text-justify px-[var(--space-3xs)] max-w-2xl mx-auto py-[var(--space-s)]">
+      <p className="text-justify px-[var(--space-3xs)] max-w-2xl mx-auto py-[var(--space-s)] leading-relaxed">
         Hos Fleur Blomster kan du betale for dine blomster online eller i
         butikken. Når betalingen er gennemført, registrerer vi din bestilling,
         gemmer dine blomster og gør dem klar til afhentning eller levering på
@@ -29,14 +30,14 @@ export default function Betaling() {
       </p>
 
       <Link
-        href="/bestil"
+        href="/pages/bestil"
         className="mt-4 w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 text-center block"
       >
         Bestil blomsterne
       </Link>
 
       <Link
-        href="/betaling"
+        href="/pages/betaling"
         className="mt-2 w-full bg-green-600 text-white py-2 rounded hover:bg-green-700 text-center block"
       >
         Bestil blomsterne og betal
