@@ -19,14 +19,13 @@ export default function Kort() {
       center: [lat, lng],
       zoom: 20,
       scrollWheelZoom: false,
-      zoomControl: false, // Deaktiver standard zoom-knapper
+      zoomControl: false,
     });
 
     L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
       attribution: "&copy; OpenStreetMap",
     }).addTo(map);
 
-    // Tilføj zoom-knapper nederst til højre
     L.control
       .zoom({
         position: "bottomright",
@@ -38,7 +37,7 @@ export default function Kort() {
       html: `<div style="
         width: 12px;
         height: 12px;
-        background: red;
+        background: var(--mørkegrøn);
         border-radius: 50%;
       "></div>`,
       iconSize: [16, 16],
@@ -78,12 +77,12 @@ export default function Kort() {
 
   return (
     <section className="w-full px-[var(--space-xl)] pb-[var(--space-xl)]">
-      <div className="grid grid-cols-1 md:grid-cols-2  items-start">
-        <div className="w-full h-[480px] rounded-xl shadow-md border relative">
-          <div ref={mapRef} className="w-full h-full rounded-xl" />
+      <div className="grid grid-cols-1 md:grid-cols-2  items-start gap-8 md:gap-0">
+        <div className="w-full h-[480px] relative">
+          <div ref={mapRef} className="w-full h-full " />
         </div>
 
-        <div className="pt-[var(--space-xs)] pl-[var(--space-l)] ">
+        <div className="pt-[var(--space-xs)] md:pl-[var(--space-l)] pl-0 ">
           <h5 className="text-lg font-semibold">KONTAKT OS </h5>
           <p className="mb-6 text-justify pt-[var(--space-2xs)] ">
             Fleur Blomster har til huse på Trørødvej 67, 2950 Vedbæk, Danmark.

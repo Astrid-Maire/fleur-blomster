@@ -1,63 +1,45 @@
 "use client";
+
 import { createContext, useContext, useState } from "react";
 
 const KurvContext = createContext();
 
 export function KurvProvider({ children }) {
   const [kurv, setKurv] = useState([]);
-  const [visKurv, setVisKurv] = useState(false);
-
-  const toggleKurv = () => setVisKurv(!visKurv);
+  const [kurvÅben, setKurvÅben] = useState(false);
+  const [ikonSynligt, setIkonSynligt] = useState(false);
 
   const tilføjTilKurv = (nytProdukt) => {
-    setKurv((tidligere) => {
-      const eksisterendeIndex = tidligere.findIndex(
+    setKurv((prev) => {
+      const eksisterende = prev.find(
         (item) =>
           item.id === nytProdukt.id && item.stoerrelse === nytProdukt.stoerrelse
       );
 
-      if (eksisterendeIndex !== -1) {
-        const nyKurv = [...tidligere];
-        nyKurv[eksisterendeIndex] = {
-          ...nyKurv[eksisterendeIndex],
-          antal: nyKurv[eksisterendeIndex].antal + 1,
-        };
-        return nyKurv;
-      } else {
-        return [...tidligere, { ...nytProdukt, antal: 1 }];
+      if (eksisterende) {
+        return prev.map((item) =>
+          item.id === nytProdukt.id && item.stoerrelse === nytProdukt.stoerrelse
+            ? { ...item, antal: item.antal + 1 }
+            : item
+        );
       }
+
+      return [...prev, nytProdukt];
     });
 
-    setVisKurv(true); // Åbner automatisk kurven, når der tilføjes et produkt
-  };
-
-  const opdaterAntal = ({ id, stoerrelse }, nyAntal) => {
-    setKurv((tidligere) =>
-      tidligere.map((item) =>
-        item.id === id && item.stoerrelse === stoerrelse
-          ? { ...item, antal: nyAntal }
-          : item
-      )
-    );
-  };
-
-  const fjernFraKurv = ({ id, stoerrelse }) => {
-    setKurv((tidligere) =>
-      tidligere.filter(
-        (item) => !(item.id === id && item.stoerrelse === stoerrelse)
-      )
-    );
+    setIkonSynligt(true);
   };
 
   return (
     <KurvContext.Provider
       value={{
         kurv,
+        setKurv,
+        kurvÅben,
+        setKurvÅben,
         tilføjTilKurv,
-        opdaterAntal,
-        fjernFraKurv,
-        visKurv,
-        toggleKurv,
+        ikonSynligt,
+        setIkonSynligt,
       }}
     >
       {children}
@@ -66,5 +48,9 @@ export function KurvProvider({ children }) {
 }
 
 export function useKurv() {
-  return useContext(KurvContext);
+  const context = useContext(KurvContext);
+  if (!context) {
+    throw new Error("useKurv skal bruges indenfor KurvProvider");
+  }
+  return context;
 }

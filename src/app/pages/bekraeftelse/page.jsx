@@ -1,51 +1,38 @@
-"use client";
+import Link from "next/link";
 
-import Image from "next/image";
-import Valgmulighed from "@/app/components/Valgmulighed";
-import Anledninghovedbilleder from "@/app/components/Anledninghovedbilleder";
-
-export default function Home() {
-  const handleValgmulighed = (selected) => {
-    console.log("Valgte anledninger:", selected);
-  };
-
+export default function Betaling() {
   return (
-    <>
-      <div className="relative w-full h-[60vh] sm:h-[70vh] md:h-screen">
-        <Image
-          src="/images/anledningerhovedbilledet.png"
-          alt="Hovedbilledet til anledninger til fleur blomster"
-          fill
-          className="object-cover"
-          priority
-        />
+    <div
+      className="px-[var(--space-3xl)] py-[var(--space-m)]"
+      style={{
+        backgroundImage: "url('/images/blomster1.svg')",
+        backgroundRepeat: "no-repeat",
+        backgroundSize: "cover",
+        height: "100vh",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center",
+        gap: "1rem",
+      }}
+    >
+      <h3 className="text-center">Bekræftigelse</h3>
+      <p className="text-justify px-[var(--space-3xs)] max-w-2xl mx-auto py-[var(--space-s)] leading-relaxed">
+        Tak for din bestilling. Vi har modtaget din ordre og betalingen er
+        gennemført. Du vil snart modtage en bekræftelse på e-mail med alle
+        detaljer. Vi går nu i gang med at klargøre din bestilling, og vi sørger
+        for, at alt bliver gjort med den samme omhu og kærlighed, som vi lægger
+        i alle vores blomster. Har du spørgsmål eller særlige ønsker, er du
+        altid velkommen til at kontakte os. Tak fordi du valgte Fleur – vi
+        glæder os til at sende blomstrende glæde din vej.
+      </p>
 
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center w-full ">
-          <h2>WEBSHOP TIL FLEUR BLOMSTER</h2>
-        </div>
-      </div>
-
-      <div className="p-6">
-        <h2 className="text-4xl ">
-          BLOMSTER TIL EN <br />
-          <span className="block text-right">HVER ANLEDNING</span>
-        </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 container">
-          <div className="w-full">
-            <p className="paragraph1">
-              Velkommen til vores webshop, hvor du nemt kan bestille smukke
-              buketter og blomsterdekorationer online. Livet er fyldt med
-              særlige øjeblikke, som fortjener at blive husket. Hos Fleur
-              hjælper vi dig med at sætte ord på det, der kan være svært at
-              sige, eller gøre det smukke endnu smukkere. Om det er en
-              fødselsdag, en kærlig hilsen, en tak eller en afsked, så binder vi
-              blomster med omtanke og hjertet med. For blomster kan noget helt
-              særligt – de bringer glæde, nærvær og varme, og de skaber minder,
-              der varer ved.
-            </p>
-          </div>
-        </div>
-      </div>
-    </>
+      <Link
+        href="/"
+        className="mt-2 w-full bg-green-600 text-white py-2 rounded hover:bg-green-700 text-center block"
+      >
+        Tilbage til forsiden
+      </Link>
+    </div>
   );
 }

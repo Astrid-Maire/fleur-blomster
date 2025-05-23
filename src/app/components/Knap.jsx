@@ -10,36 +10,41 @@ export default function Knap({ produkt }) {
   const handleClick = () => {
     if (!valgtStoerrelse) return;
 
-    // ✅ Antal skal IKKE med – det håndteres i KurvContext
+    const pris =
+      valgtStoerrelse === "S"
+        ? produkt.price_s
+        : valgtStoerrelse === "M"
+        ? produkt.price_m
+        : produkt.price_l;
+
     tilføjTilKurv({
       id: produkt.id,
-      navn: produkt.name, // gem navn fra Supabase
-      billede: produkt.images, // gem billede fra Supabase
+      navn: produkt.name,
       stoerrelse: valgtStoerrelse,
+      pris,
+      antal: 1,
     });
   };
 
   return (
-    <div>
+    <div className="flex items-center gap-2">
       <select
         value={valgtStoerrelse}
         onChange={(e) => setValgtStoerrelse(e.target.value)}
-        className="border px-2 py-1"
+        className="border p-1 rounded"
       >
         <option value="">Vælg størrelse</option>
-        <option value="S">S</option>
-        <option value="M">M</option>
-        <option value="L">L</option>
+        <option value="S">Lille - {produkt.price_s} kr</option>
+        <option value="M">Mellem - {produkt.price_m} kr</option>
+        <option value="L">Stor - {produkt.price_l} kr</option>
       </select>
 
       <button
         onClick={handleClick}
         disabled={!valgtStoerrelse}
-        className={`ml-2 px-4 py-2 text-white ${
-          valgtStoerrelse ? "bg-green-600" : "bg-gray-400 cursor-not-allowed"
-        }`}
+        className="bg-green-600 text-white px-3 py-1 rounded disabled:opacity-50"
       >
-        Læg i kurv
+        LÆG I KURV
       </button>
     </div>
   );

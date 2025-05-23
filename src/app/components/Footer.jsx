@@ -24,7 +24,7 @@ export default function Footer() {
         <span> Instagram: fleur_blomster </span>
       </div>
 
-      <div className="contacts flex flex-col  md:items-end order-3 w-full md:w-auto text-center ">
+      <div className="contacts flex flex-col md:items-end order-3 w-full md:w-auto text-center pb-6 md:pb-0">
         <span className="font-bold">Kontakt information</span>
         <span>Mail: fleurblomster@gmail.com</span>
         <span>Tlf nr: +45 51 21 63 46 </span>

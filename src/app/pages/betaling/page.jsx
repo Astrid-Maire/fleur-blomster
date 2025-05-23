@@ -1,6 +1,7 @@
 "use client";
 import Back3 from "@/app/components/Back3";
 import { useState } from "react";
+import Link from "next/link";
 
 export default function Bekraeftelse() {
   const [kortData, setKortData] = useState({

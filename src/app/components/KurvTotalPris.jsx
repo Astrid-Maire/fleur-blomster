@@ -3,7 +3,7 @@
 import { useKurv } from "./KurvContext";
 import KurvTotalPris from "./KurvTotalPris";
 import { useRouter } from "next/navigation";
-import { useMemo } from "react";
+import { useEffect } from "react";
 
 export default function KurvMedBetal() {
   const { kurv, kurvÅben, setKurvÅben } = useKurv();
@@ -11,22 +11,18 @@ export default function KurvMedBetal() {
 
   if (!kurvÅben) return null;
 
-  const grupperet = useMemo(() => {
-    return kurv.reduce((acc, item) => {
-      if (!acc[item.navn]) acc[item.navn] = [];
-      acc[item.navn].push(item);
-      return acc;
-    }, {});
-  }, [kurv]);
+  // Grupér produkter efter navn
+  const grupperet = kurv.reduce((acc, item) => {
+    if (!acc[item.navn]) acc[item.navn] = [];
+    acc[item.navn].push(item);
+    return acc;
+  }, {});
 
   const handleBetal = () => {
-    try {
-      const data = JSON.stringify(kurv);
-      localStorage.setItem("kurvData", data);
-      router.push("/pages/beslutning");
-    } catch (error) {
-      console.error("Fejl ved gem i localStorage:", error);
-    }
+    // Gem kurven i localStorage
+    localStorage.setItem("kurvData", JSON.stringify(kurv));
+    // Naviger til beslutning
+    router.push("/pages/beslutning");
   };
 
   return (

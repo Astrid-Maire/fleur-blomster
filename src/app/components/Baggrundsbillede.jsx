@@ -20,7 +20,7 @@ export default function InspirationSection() {
           INSPIRATION TIL DIG
         </h3>
 
-        <div className="flex flex-col md:flex-row gap-8">
+        <div className="flex flex-col-reverse md:flex-row gap-8">
           <div className="flex-1 flex flex-col gap-6">
             <p className="pl-[var(--space-l)] text-justify">
               Hos Fleur Blomster ønsker vi at dele mere end bare blomster. Vi
@@ -48,7 +48,7 @@ export default function InspirationSection() {
               initial={{ opacity: 0, y: 50 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: 0.2, duration: 0.6 }}
-              className="absolute left-1/2 top-[20px] transform -translate-x-1/2 w-64 h-96 rotate-[5deg] z-10"
+              className="absolute left-1/2 top-[20px] transform -translate-x-1/2 w-52 h-80 md:w-64 md:h-96 rotate-[5deg] z-10"
             >
               <Image
                 src="/images/l.png"
@@ -62,7 +62,7 @@ export default function InspirationSection() {
               initial={{ opacity: 0, y: 50 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: 0.4, duration: 0.6 }}
-              className="absolute left-[10%] top-[140px] w-56 h-80 rotate-[-10deg] z-20"
+              className="absolute left-[10%] top-[120px] md:top-[140px] w-44 h-64 md:w-56 md:h-80 rotate-[-10deg] z-20"
             >
               <Image
                 src="/images/m.png"
@@ -76,7 +76,7 @@ export default function InspirationSection() {
               initial={{ opacity: 0, y: 50 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: 0.6, duration: 0.6 }}
-              className="absolute right-[5%] top-[180px] w-48 h-72 rotate-[12deg] z-0"
+              className="absolute right-[5%] top-[160px] md:top-[180px] w-50 h-60 md:w-55 md:h-82 rotate-[12deg] z-0"
             >
               <Image
                 src="/images/s.png"

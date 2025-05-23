@@ -11,15 +11,15 @@ const FlowerGallery = () => {
   ];
 
   return (
-    <div className="flex flex-col gap-4 px-[var(--space-xl)] pb-[var(--space-l)] ">
-      <div className="grid grid-cols-20 gap-4">
+    <div className="flex flex-col gap-1 md:gap-4 px-[var(--space-xl)] md:py-0 py-[var(--space-l)]">
+      <div className="grid grid-cols-20 gap-1 md:gap-4">
         <div className="col-span-12">
           <Image
             src={flowers[0].src}
             alt={flowers[0].alt}
             width={600}
             height={400}
-            className="w-full h-auto object-cover "
+            className="w-full h-auto object-cover"
           />
         </div>
         <div className="col-span-8">
@@ -28,19 +28,19 @@ const FlowerGallery = () => {
             alt={flowers[1].alt}
             width={300}
             height={350}
-            className="w-full h-auto object-cover "
+            className="w-full h-auto object-cover"
           />
         </div>
       </div>
 
-      <div className="grid grid-cols-30 gap-4">
+      <div className="grid grid-cols-30 gap-1 md:gap-4">
         <div className="col-span-11">
           <Image
             src={flowers[2].src}
             alt={flowers[2].alt}
             width={600}
             height={400}
-            className="w-full h-auto object-cover "
+            className="w-full h-auto object-cover"
           />
         </div>
         <div className="col-span-11">
@@ -49,7 +49,7 @@ const FlowerGallery = () => {
             alt={flowers[3].alt}
             width={300}
             height={350}
-            className="w-full h-auto object-cover "
+            className="w-full h-auto object-cover"
           />
         </div>
         <div className="col-span-8">
@@ -58,7 +58,7 @@ const FlowerGallery = () => {
             alt={flowers[4].alt}
             width={300}
             height={300}
-            className="w-full h-auto object-cover "
+            className="w-full h-auto object-cover"
           />
         </div>
       </div>

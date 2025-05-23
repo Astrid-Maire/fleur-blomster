@@ -43,22 +43,36 @@ export default function ProductList({ selectedCategory }) {
   if (produkter.length === 0) return <p>Ingen produkter fundet.</p>;
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mt-4">
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 px-[var(--space-xl)]">
       {produkter.map((produkt) => (
-        <div key={produkt.id} className="border p-4 shadow">
-          <div className="uppercase text-sm">{produkt.name}</div>
-          <Link href={`/pages/shop/${produkt.id}`}>
-            <img
-              src={produkt.images}
-              alt={produkt.name}
-              className="w-full aspect-square object-cover rounded"
-            />
-          </Link>
-          <p className="mt-4 text-justify">{produkt.kortbeskrives}</p>
-          <p className="font-bold mt-2">
-            {produkt.price_s} kr {produkt.price_m} kr {produkt.price_l} kr
-          </p>
-          <Knap produkt={produkt} />
+        <div
+          key={produkt.id}
+          className="custom-border p-4 shadow flex flex-col justify-between"
+          style={{ minHeight: "450px" }}
+        >
+          <div>
+            <div className="h9 uppercase text-sm">{produkt.name}</div>
+            <Link
+              href={`/pages/shop/${produkt.id}`}
+              className="block w-full aspect-square"
+            >
+              <img
+                src={produkt.images}
+                alt={produkt.name}
+                className="w-full h-full object-cover"
+              />
+            </Link>
+            <p className="mt-4 text-justify">{produkt.kortbeskrives}</p>
+          </div>
+
+          <div className="flex flex-col items-center">
+            <p className="mt-4 pb-3 text-center">
+              {produkt.price_s} kr&nbsp;&nbsp;&nbsp;
+              {produkt.price_m} kr&nbsp;&nbsp;&nbsp;
+              {produkt.price_l} kr
+            </p>
+            <Knap produkt={produkt} />
+          </div>
         </div>
       ))}
     </div>

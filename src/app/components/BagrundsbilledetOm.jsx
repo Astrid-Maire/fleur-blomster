@@ -17,10 +17,11 @@ export default function InspirationSection() {
         className="object-cover opacity-10 -z-10"
         priority
       />
-      <div className="relative z-10 px-[var(--space-xl)] mx-auto">
-        <h3 className="pb-6 pt-[var(--space-xl)]">INSPIRATION TIL DIG</h3>
 
-        <div className="flex flex-col md:flex-row gap-15">
+      <div className="relative z-10 px-[var(--space-xl)] mx-auto">
+        <h3 className="pb-4 pt-[var(--space-xl)]">INSPIRATION TIL DIG</h3>
+
+        <div className="flex flex-col-reverse md:flex-row gap-6 md:gap-15 pb-6 md:pb-0">
           <div className="flex-1 flex flex-col justify-center">
             <p className="text-justify pb-[var(--space-l)]">
               Fleur Blomster åbnede dørene på Mors Dag i 2004, og allerede før
@@ -32,7 +33,6 @@ export default function InspirationSection() {
               weekenden. Fleur holder åbent alle ugens dage, fordi vi ved, at
               blomster bringer glæde og ro.
             </p>
-
             <p className="text-justify">
               Ejeren, Trinh Van Ha, er født i Vietnam, og hendes sans for
               æstetik og østens præg afspejles i de smukke buketter og
@@ -41,16 +41,12 @@ export default function InspirationSection() {
             </p>
           </div>
 
-          <div
-            className="relative md:flex-[0_0_49%] w-full flex items-end justify-center"
-            style={{ minHeight: "500px" }}
-          >
-            {/* Stor billede */}
+          <div className="relative md:flex-[0_0_49%] w-full flex items-end justify-center h-[300px] md:h-auto">
             <motion.div
               initial={{ opacity: 0, y: 50 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: 0.2, duration: 0.6 }}
-              className="relative w-full h-full  overflow-hidden shadow-xl"
+              className="relative w-full h-full overflow-hidden shadow-xl"
             >
               <Image
                 src="/images/ejer1.png"
@@ -64,8 +60,8 @@ export default function InspirationSection() {
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: 1.2, duration: 0.6 }}
-              className="absolute bottom-0 left-0 w-2/4 aspect-square overflow-hidden z-20 translate-x-[-15%] translate-y-[25%]   "
-              style={{ maxWidth: "280px" }}
+              className="absolute bottom-0 left-0 w-2/4 aspect-square overflow-hidden z-20 translate-x-[-15%] translate-y-[5%] md:translate-y-[25%]
+             max-w-[160px] sm:max-w-[200px] md:max-w-[280px]"
             >
               <Image
                 src="/images/ejer.png"

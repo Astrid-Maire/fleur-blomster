@@ -6,9 +6,10 @@ export default function BackArrow() {
   return (
     <Link
       href="/pages/shop"
-      className="flex items-center gap-2 mt-6 mb-12 text-blue-600 hover:text-blue-800 transition-colors duration-150"
+      className="flex items-center mt-6 ml-6 space-x-2 transition-colors duration-150 ease-in hover:text-gray-600"
     >
-      <FaArrowLeftLong size={24} />
+      <FaArrowLeftLong size={20} />
+      <span>Tilbage</span>
     </Link>
   );
 }

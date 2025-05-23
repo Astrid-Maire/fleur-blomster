@@ -41,12 +41,16 @@ export default function Home() {
             <NewsletterForm onSuccess={() => setShowForm(false)} />
           </div>
         )}
-        <h2 className="text-4xl  mt-var(--space-2xs) ">
-          VELKOMMEN TIL <br />
-          <div className="block text-right">FLEUR BLOMSTER</div>
+        <h2 className="text-2xl sm:text-3xl md:text-4xl mt-[var(--space-2xs)] leading-tight">
+          <span className="block sm:hidden ">VELKOMMEN TIL FLEUR BLOMSTER</span>
+          <span className="hidden sm:block">
+            VELKOMMEN TIL
+            <br />
+            <span className="block text-right">FLEUR BLOMSTER</span>
+          </span>
         </h2>
-        <div className="container">
-          <p class="paragraph">
+        <div className="paragraph-container">
+          <p className="paragraph">
             Hos os handler det om mere end blomster. Vi skaber personlige
             buketter og blomstrende oplevelser, der bringer glæde, nærvær og
             skønhed ind i hverdagen. Hver blomst er nøje udvalgt, hver buket
@@ -54,7 +58,7 @@ export default function Home() {
             om du leder efter en gave, noget smukt til dig selv eller blot
             inspiration, glæder vi os til at dele vores passion med dig.
           </p>
-          <p class="paragraph">
+          <p className="paragraph">
             Vi er passionerede omkring at bringe naturens skønhed tættere på
             dig. Hos os finder du ikke bare blomster, men inspiration til at
             skabe magiske øjeblikke i dit liv. Uanset om du ønsker at forkæle
@@ -68,18 +72,18 @@ export default function Home() {
         <div className="container-1">
           <h3 className="text-4xl  mt-var(--space-2xs) ">
             FIND DIN NÆSTE <br />
-            <div className="block text-right">BLOMSTERFAVORIT </div>
+            <div className="block text-right break-words">BLOMSTERFAVORIT </div>
           </h3>
         </div>
-        <div className="container">
-          <p class="paragraph-1">
+        <div className="paragraph-container">
+          <p className="paragraph-1">
             Blomster er naturens eget smykke, og de har en særlig evne til at
             skabe glæde og lys i hverdagen. Hos os finder du et bredt udvalg af
             smukke buketter, der passer til både de små og store øjeblikke. Vi
             udvælger kun de fineste blomster og skaber buketter, der både er
             klassiske og moderne, altid med øje for detaljer og kvalitet.
           </p>
-          <p class="paragraph-1">
+          <p className="paragraph-1">
             Uanset om du leder efter en romantisk gestus, en farverig buket til
             fest eller en enkel og elegant sammensætning, har vi noget, der
             passer til din smag. Gå på opdagelse i vores udvalg nedenfor og lad

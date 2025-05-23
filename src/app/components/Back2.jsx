@@ -8,7 +8,8 @@ export default function BackArrow() {
       href="/pages/beslutning"
       className="flex items-center gap-2 mt-6 mb-12 text-blue-600 hover:text-blue-800 transition-colors duration-150"
     >
-      <FaArrowLeftLong size={24} />
+      <FaArrowLeftLong size={20} />
+      <span>Tilbage</span>
     </Link>
   );
 }

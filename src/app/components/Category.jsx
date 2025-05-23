@@ -20,7 +20,7 @@ export default function Produkter({ selectedCategory }) {
       let query = supabase.from("fleurblomster").select("*");
 
       if (selectedCategory && selectedCategory !== "alle") {
-        query = query.eq("type", selectedCategory); // 🔁 Skiftet fra "category" til "type"
+        query = query.eq("type", selectedCategory);
       }
 
       const { data, error } = await query;

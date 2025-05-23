@@ -23,9 +23,9 @@ export default function FleurGalleriPage() {
           OPLEV VORES <br />
           <div className="block text-right">SMUKKE BLOMSTER</div>
         </h2>
-        <div className="flex container-2  justify-between gap-10 ">
-          <div className="flex-1  ">
-            <p className="  pb-[var(--space-s)]">
+        <div className="flex flex-col-reverse md:flex-row container-2 justify-between gap-10">
+          <div className="flex-1">
+            <p className="pb-5 md:pb-[var(--space-s)] ">
               Velkommen til Fleurs galleri, hvor du kan opleve et udvalg af de
               buketter, dekorationer og blomster-arrangementer, vi har skabt
               gennem tiden. Hver enkelt opsætning er lavet med øje for detaljer,
@@ -33,7 +33,7 @@ export default function FleurGalleriPage() {
               bruges til. Vi lægger stor vægt på at skabe personlige udtryk,
               hvad enten det er til hverdag, fest eller en særlig begivenhed.
             </p>
-            <p className="">
+            <p>
               Galleriet er både en hyldest til vores håndværk og en
               inspirationskilde for dig, der søger blomster med sjæl. Måske
               finder du idéer til en gave, en bryllupsdekoration, en smuk afsked
@@ -42,7 +42,7 @@ export default function FleurGalleriPage() {
               mærke det i billederne.
             </p>
           </div>
-          <div className="flex-1 ">
+          <div className="flex-1">
             <Image
               src="/images/galleri.png"
               alt="billeder af fleur blomsters bukter"

@@ -23,7 +23,6 @@ export default function Filter({ selected, onChange }) {
       if (error) {
         console.error("Fejl ved hentning af typer:", error);
       } else {
-        // Fjern dubletter og trim whitespace
         const uniqueTypes = Array.from(
           new Set(data.map((item) => item.type.trim()))
         );
@@ -36,8 +35,11 @@ export default function Filter({ selected, onChange }) {
   }, []);
 
   return (
-    <div className="mb-6">
-      <label htmlFor="filter" className="block mb-2 font-semibold">
+    <div className="w-80 pb-5 md:pb-0">
+      <label
+        htmlFor="filter"
+        className="block mb-2 pt-2 md:pt-0 font-semibold "
+      >
         Vælg kategori:
       </label>
       {loading ? (
@@ -47,7 +49,11 @@ export default function Filter({ selected, onChange }) {
           id="filter"
           value={selected}
           onChange={(e) => onChange(e.target.value)}
-          className="border rounded p-2 w-full"
+          className={`custom-border p-2 w-full appearance-none ${
+            selected !== "alle"
+              ? "bg-[var(--baggrundsfarve)] "
+              : "bg-[var(--baggrundsfarve)]"
+          }`}
         >
           <option value="alle">Alle</option>
           {types.map((type) => (

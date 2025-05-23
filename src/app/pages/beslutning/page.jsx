@@ -4,7 +4,7 @@ import Back1 from "@/app/components/Back1";
 export default function Betaling() {
   return (
     <div
-      className="px-[var(--space-3xl)] py-[var(--space-m)]"
+      className=""
       style={{
         backgroundImage: "url('/images/blomster1.svg')",
         backgroundRepeat: "no-repeat",
@@ -17,31 +17,33 @@ export default function Betaling() {
         gap: "1rem",
       }}
     >
-      <Back1 />
-      <h3 className="text-center">Betalingsside</h3>
-      <p className="text-justify px-[var(--space-3xs)] max-w-2xl mx-auto py-[var(--space-s)] leading-relaxed">
-        Hos Fleur Blomster kan du betale for dine blomster online eller i
-        butikken. Når betalingen er gennemført, registrerer vi din bestilling,
-        gemmer dine blomster og gør dem klar til afhentning eller levering på
-        det aftalte tidspunkt. Vi begynder først at klargøre din ordre, når vi
-        har modtaget betaling. Ved køb accepterer du samtidig vores
-        handelsbetingelser, som sikrer en tryg og klar handel. Har du spørgsmål,
-        er du altid velkommen til at kontakte os.
-      </p>
+      <div>
+        <h3 className="text-center w-full">BESTIL BLOMSTERBUKET </h3>
+        <div className="relative max-w-2xl mx-auto px-[var(--space-3xs)] py-[var(--space-s)]">
+          <div className="absolute -left-70 top-0">
+            <Back1 />
+          </div>
+          <p className="text-justify leading-relaxed pb-[var(--space-m)]">
+            Hos Fleur Blomster kan du betale for dine blomster online eller i
+            butikken. Når betalingen er gennemført, registrerer vi din
+            bestilling, gemmer dine blomster og gør dem klar til afhentning
+            eller levering på det aftalte tidspunkt. Vi begynder først at
+            klargøre din ordre, når vi har modtaget betaling. Ved køb accepterer
+            du samtidig vores handelsbetingelser, som sikrer en tryg og klar
+            handel. Har du spørgsmål, er du altid velkommen til at kontakte os.
+          </p>
+        </div>
 
-      <Link
-        href="/pages/bestil"
-        className="mt-4 w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 text-center block"
-      >
-        Bestil blomsterne
-      </Link>
+        <div className="flex justify-center space-x-4 pb-[var(--space-22xl)]">
+          <Link href="/pages/bestil" className="min-knap">
+            BESTIL BLOMSTERNE
+          </Link>
 
-      <Link
-        href="/pages/betaling"
-        className="mt-2 w-full bg-green-600 text-white py-2 rounded hover:bg-green-700 text-center block"
-      >
-        Bestil blomsterne og betal
-      </Link>
+          <Link href="/pages/betaling" className="min-knap">
+            BESTIL BLOMSTERNE OG BETAL
+          </Link>
+        </div>
+      </div>
     </div>
   );
 }
