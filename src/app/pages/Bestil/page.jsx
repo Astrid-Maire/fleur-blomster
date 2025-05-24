@@ -1,9 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { createClient } from "@supabase/supabase-js";
 import { useKurv } from "@/app/components/KurvContext";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 
 // Supabase setup
 const supabase = createClient(
@@ -24,11 +24,13 @@ export default function BestilSide() {
   const { kurv } = useKurv();
   const [besked, setBesked] = useState("");
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const flow = searchParams.get("flow"); // 'med-betaling' eller 'uden-betaling'
 
   async function handleSubmit(e) {
     e.preventDefault();
 
-    // Find "anledning" fra kurven
+    // Find anledning i kurven (hvis relevant)
     const anledningItem = kurv.find((item) =>
       item.id?.startsWith("anledning-")
     );
@@ -49,6 +51,8 @@ export default function BestilSide() {
       setBesked("Fejl ved bestilling. Prøv igen.");
     } else {
       setBesked("Din bestilling er sendt!");
+
+      // Nulstil form
       setFormData({
         fornavn: "",
         efternavn: "",
@@ -57,13 +61,20 @@ export default function BestilSide() {
         afhentningsdato: "",
         korttekst: "",
       });
-      router.push("/pages/bekraeftelse");
+
+      // Redirect afhængigt af flow
+      if (flow === "med-betaling") {
+        router.push("/pages/betaling");
+      } else {
+        router.push("/pages/bekraeftelse");
+      }
     }
   }
 
   return (
     <div className="max-w-xl mx-auto px-4 py-8">
-      <h3 className="text-2xl">BESTIL BLOMSTER</h3>
+      <h3 className="text-2xl mb-6">BESTIL BLOMSTER</h3>
+
       <form onSubmit={handleSubmit} className="space-y-4">
         <input
           name="fornavn"

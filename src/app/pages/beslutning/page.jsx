@@ -4,7 +4,6 @@ import Back1 from "@/app/components/Back1";
 export default function Betaling() {
   return (
     <div
-      className=""
       style={{
         backgroundImage: "url('/images/blomster1.svg')",
         backgroundRepeat: "no-repeat",
@@ -18,7 +17,7 @@ export default function Betaling() {
       }}
     >
       <div>
-        <h3 className="text-center w-full">BESTIL BLOMSTERBUKET </h3>
+        <h3 className="text-center w-full">BESTIL BLOMSTERBUKET</h3>
         <div className="relative max-w-2xl mx-auto px-[var(--space-3xs)] py-[var(--space-s)]">
           <div className="absolute -left-70 top-0">
             <Back1 />
@@ -35,14 +34,14 @@ export default function Betaling() {
         </div>
 
         <div className="flex justify-center space-x-4 pb-[var(--space-22xl)]">
-          {/* Gå til bestilling → bekræftelse uden betaling */}
-          <Link href="/pages/bestil?flow=uden-betaling">
+          {/* Bestil uden betaling */}
+          <Link href="/pages/bestil?flow=uden-betaling" passHref>
             <button className="min-knap">BESTIL BLOMSTERNE</button>
           </Link>
 
-          {/* Gå til bestilling → betaling → bekræftelse */}
-          <Link href="/pages/bestil?flow=med-betaling">
-            <button className="min-knap">BESTIL BLOMSTERNE OG BETAL</button>
+          {/* Bestil med betaling */}
+          <Link href="/pages/bestil?flow=med-betaling" className="min-knap">
+            BESTIL BLOMSTERNE OG BETAL
           </Link>
         </div>
       </div>

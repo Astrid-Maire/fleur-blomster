@@ -1,7 +1,7 @@
 "use client";
 import Back3 from "@/app/components/Back3";
 import { useState } from "react";
-import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 export default function Bekraeftelse() {
   const [kortData, setKortData] = useState({
@@ -10,6 +10,8 @@ export default function Bekraeftelse() {
     udløbsdato: "",
     cvc: "",
   });
+
+  const router = useRouter();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -21,8 +23,12 @@ export default function Bekraeftelse() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
     // Her skal du sende data til en betalingsgateway som Stripe
     alert("Betalingsinfo sendt (ikke rigtigt – demo)");
+
+    // Efter betaling, naviger til bekræftelsesside
+    router.push("/pages/bekraeftelse");
   };
 
   return (
@@ -108,12 +114,9 @@ export default function Bekraeftelse() {
             </div>
           </div>
 
-          <Link
-            href="/pages/bekraeftelse"
-            className="bg-green-600 hover:bg-green-700 text-white py-2 rounded text-lg text-center block"
-          >
+          <button type="submit" className="min-knap">
             Betal
-          </Link>
+          </button>
         </form>
       </div>
     </div>
