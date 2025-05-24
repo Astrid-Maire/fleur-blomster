@@ -4,53 +4,81 @@ import { createContext, useContext, useState } from "react";
 
 const KurvContext = createContext();
 
-export function KurvProvider({ children }) {
+export const useKurv = () => useContext(KurvContext);
+
+export const KurvProvider = ({ children }) => {
   const [kurv, setKurv] = useState([]);
   const [kurvÅben, setKurvÅben] = useState(false);
-  const [ikonSynligt, setIkonSynligt] = useState(false);
 
-  const tilføjTilKurv = (nytProdukt) => {
-    setKurv((prev) => {
-      const eksisterende = prev.find(
-        (item) =>
-          item.id === nytProdukt.id && item.stoerrelse === nytProdukt.stoerrelse
+  const tilføjTilKurv = (nyVare) => {
+    setKurv((prevKurv) => {
+      const findesAllerede = prevKurv.find(
+        (vare) => vare.id === nyVare.id && vare.stoerrelse === nyVare.stoerrelse
       );
 
-      if (eksisterende) {
-        return prev.map((item) =>
-          item.id === nytProdukt.id && item.stoerrelse === nytProdukt.stoerrelse
-            ? { ...item, antal: item.antal + 1 }
-            : item
+      if (findesAllerede) {
+        return prevKurv.map((vare) =>
+          vare.id === nyVare.id && vare.stoerrelse === nyVare.stoerrelse
+            ? { ...vare, antal: vare.antal + nyVare.antal }
+            : vare
         );
+      } else {
+        return [...prevKurv, nyVare];
       }
-
-      return [...prev, nytProdukt];
     });
 
-    setIkonSynligt(true);
+    setKurvÅben(true);
+  };
+
+  const øgeAntal = (id, stoerrelse) => {
+    setKurv((prevKurv) =>
+      prevKurv.map((vare) =>
+        vare.id === id && vare.stoerrelse === stoerrelse
+          ? { ...vare, antal: vare.antal + 1 }
+          : vare
+      )
+    );
+  };
+
+  const mindskeAntal = (id, stoerrelse) => {
+    setKurv((prevKurv) =>
+      prevKurv
+        .map((vare) =>
+          vare.id === id && vare.stoerrelse === stoerrelse
+            ? { ...vare, antal: vare.antal - 1 }
+            : vare
+        )
+        .filter((vare) => vare.antal > 0)
+    );
+  };
+
+  const sletVare = (id, stoerrelse) => {
+    setKurv((prevKurv) =>
+      prevKurv.filter(
+        (vare) => !(vare.id === id && vare.stoerrelse === stoerrelse)
+      )
+    );
+  };
+
+  const nulstilKurv = () => {
+    setKurv([]);
+    setKurvÅben(false);
   };
 
   return (
     <KurvContext.Provider
       value={{
         kurv,
-        setKurv,
         kurvÅben,
         setKurvÅben,
         tilføjTilKurv,
-        ikonSynligt,
-        setIkonSynligt,
+        øgeAntal,
+        mindskeAntal,
+        sletVare,
+        nulstilKurv,
       }}
     >
       {children}
     </KurvContext.Provider>
   );
-}
-
-export function useKurv() {
-  const context = useContext(KurvContext);
-  if (!context) {
-    throw new Error("useKurv skal bruges indenfor KurvProvider");
-  }
-  return context;
-}
+};

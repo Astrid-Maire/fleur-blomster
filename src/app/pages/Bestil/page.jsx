@@ -1,112 +1,141 @@
-// src/app/pages/bestil/BestilForm.js
 "use client";
-import Link from "next/link";
-import { useEffect, useState } from "react";
-import Back2 from "@/app/components/Back2";
 
-export default function BestilForm() {
-  const [minDate, setMinDate] = useState("");
-  const [maxDate, setMaxDate] = useState("");
+import { useState } from "react";
+import { createClient } from "@supabase/supabase-js";
+import { useKurv } from "@/app/components/KurvContext";
+import { useRouter } from "next/navigation";
 
-  useEffect(() => {
-    const today = new Date();
-    const max = new Date();
-    max.setDate(today.getDate() + 14);
-    const toInputFormat = (date) => date.toISOString().split("T")[0];
-    setMinDate(toInputFormat(today));
-    setMaxDate(toInputFormat(max));
-  }, []);
+// Supabase setup
+const supabase = createClient(
+  "https://xraaztpjtcujqbtvczfb.supabase.co",
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhyYWF6dHBqdGN1anFidHZjemZiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDY0NDM1NDEsImV4cCI6MjA2MjAxOTU0MX0.mGlP9vpADg4GTzzvNWy9jM8UQOfe-JKbH-o66kLKKoA"
+);
+
+export default function BestilSide() {
+  const [formData, setFormData] = useState({
+    fornavn: "",
+    efternavn: "",
+    email: "",
+    telefon: "",
+    afhentningsdato: "",
+    korttekst: "",
+  });
+
+  const { kurv } = useKurv();
+  const [besked, setBesked] = useState("");
+  const router = useRouter();
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+
+    // Find "anledning" fra kurven
+    const anledningItem = kurv.find((item) =>
+      item.id?.startsWith("anledning-")
+    );
+    const anledning = anledningItem?.navn || "";
+    const preferences = anledningItem?.info?.præferencer || "";
+
+    const samletKurv = {
+      ...formData,
+      anledning,
+      preferences,
+      kurv,
+    };
+
+    const { data, error } = await supabase.from("orders").insert([samletKurv]);
+
+    if (error) {
+      console.error("Fejl ved bestilling:", JSON.stringify(error, null, 2));
+      setBesked("Fejl ved bestilling. Prøv igen.");
+    } else {
+      setBesked("Din bestilling er sendt!");
+      setFormData({
+        fornavn: "",
+        efternavn: "",
+        email: "",
+        telefon: "",
+        afhentningsdato: "",
+        korttekst: "",
+      });
+      router.push("/pages/bekraeftelse");
+    }
+  }
 
   return (
-    <div className="min-h-screen px-6 py-12 bg-white text-gray-900">
-      <Back2 />
-      <div className="max-w-2xl mx-auto">
-        <h1 className="text-3xl font-bold mb-8 text-center">Bestilling</h1>
-        <form action="/tak" method="POST" className="flex flex-col gap-6">
-          <div className="flex flex-col">
-            <label htmlFor="fornavn">Fornavn</label>
-            <input
-              type="text"
-              name="fornavn"
-              id="fornavn"
-              required
-              className="p-2 border border-gray-300 rounded"
-            />
-          </div>
+    <div className="max-w-xl mx-auto px-4 py-8">
+      <h3 className="text-2xl">BESTIL BLOMSTER</h3>
+      <form onSubmit={handleSubmit} className="space-y-4">
+        <input
+          name="fornavn"
+          placeholder="Fornavn"
+          value={formData.fornavn}
+          onChange={(e) =>
+            setFormData({ ...formData, fornavn: e.target.value })
+          }
+          className="border p-2 w-full"
+          required
+        />
+        <input
+          name="efternavn"
+          placeholder="Efternavn"
+          value={formData.efternavn}
+          onChange={(e) =>
+            setFormData({ ...formData, efternavn: e.target.value })
+          }
+          className="border p-2 w-full"
+          required
+        />
+        <input
+          name="email"
+          type="email"
+          placeholder="Email"
+          value={formData.email}
+          onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+          className="border p-2 w-full"
+          required
+        />
+        <input
+          name="telefon"
+          placeholder="Telefonnummer"
+          value={formData.telefon}
+          onChange={(e) =>
+            setFormData({ ...formData, telefon: e.target.value })
+          }
+          className="border p-2 w-full"
+          required
+        />
+        <input
+          type="date"
+          name="afhentningsdato"
+          value={formData.afhentningsdato}
+          min={new Date().toISOString().split("T")[0]}
+          max={
+            new Date(Date.now() + 14 * 24 * 60 * 60 * 1000)
+              .toISOString()
+              .split("T")[0]
+          }
+          onChange={(e) =>
+            setFormData({ ...formData, afhentningsdato: e.target.value })
+          }
+          className="border p-2 w-full"
+          required
+        />
+        <textarea
+          name="korttekst"
+          placeholder="Tekst til kortet (valgfrit)"
+          value={formData.korttekst}
+          onChange={(e) =>
+            setFormData({ ...formData, korttekst: e.target.value })
+          }
+          className="border p-2 w-full"
+        />
 
-          <div className="flex flex-col">
-            <label htmlFor="efternavn">Efternavn</label>
-            <input
-              type="text"
-              name="efternavn"
-              id="efternavn"
-              required
-              className="p-2 border border-gray-300 rounded"
-            />
-          </div>
+        <button type="submit" className="min-knap">
+          Send bestilling
+        </button>
+      </form>
 
-          <div className="flex flex-col">
-            <label htmlFor="email">Emailadresse</label>
-            <input
-              type="email"
-              name="email"
-              id="email"
-              required
-              className="p-2 border border-gray-300 rounded"
-            />
-          </div>
-
-          <div className="flex flex-col">
-            <label htmlFor="telefon">Telefonnummer</label>
-            <input
-              type="tel"
-              name="telefon"
-              id="telefon"
-              pattern="[0-9]*"
-              inputMode="numeric"
-              maxLength="15"
-              required
-              className="p-2 border border-gray-300 rounded"
-            />
-            <small className="text-gray-500 mt-1">
-              Kun tal – ingen mellemrum
-            </small>
-          </div>
-
-          <div className="flex flex-col">
-            <label htmlFor="dato">Dato for afhentning</label>
-            <input
-              type="date"
-              name="dato"
-              id="dato"
-              required
-              min={minDate}
-              max={maxDate}
-              className="p-2 border border-gray-300 rounded"
-            />
-            <small className="text-gray-500 mt-1">
-              Vælg en dato inden for de næste 14 dage
-            </small>
-          </div>
-
-          <div className="flex flex-col">
-            <label htmlFor="korttekst">Tekst på kortet (valgfrit)</label>
-            <textarea
-              name="korttekst"
-              id="korttekst"
-              rows="4"
-              className="p-2 border border-gray-300 rounded"
-            />
-          </div>
-
-          <Link
-            href="/pages/betaling"
-            className="bg-green-600 hover:bg-green-700 text-white py-2 rounded text-lg text-center block"
-          >
-            Send bestilling
-          </Link>
-        </form>
-      </div>
+      {besked && <p className="mt-4 text-center">{besked}</p>}
     </div>
   );
 }

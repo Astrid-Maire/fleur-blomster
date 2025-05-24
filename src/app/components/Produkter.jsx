@@ -57,7 +57,11 @@ export default function ProductList({ selectedCategory }) {
               className="block w-full aspect-square"
             >
               <img
-                src={produkt.images}
+                src={
+                  Array.isArray(produkt.images)
+                    ? produkt.images[0]
+                    : produkt.images
+                }
                 alt={produkt.name}
                 className="w-full h-full object-cover"
               />

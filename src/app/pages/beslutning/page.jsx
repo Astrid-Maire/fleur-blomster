@@ -35,12 +35,14 @@ export default function Betaling() {
         </div>
 
         <div className="flex justify-center space-x-4 pb-[var(--space-22xl)]">
-          <Link href="/pages/bestil" className="min-knap">
-            BESTIL BLOMSTERNE
+          {/* Gå til bestilling → bekræftelse uden betaling */}
+          <Link href="/pages/bestil?flow=uden-betaling">
+            <button className="min-knap">BESTIL BLOMSTERNE</button>
           </Link>
 
-          <Link href="/pages/betaling" className="min-knap">
-            BESTIL BLOMSTERNE OG BETAL
+          {/* Gå til bestilling → betaling → bekræftelse */}
+          <Link href="/pages/bestil?flow=med-betaling">
+            <button className="min-knap">BESTIL BLOMSTERNE OG BETAL</button>
           </Link>
         </div>
       </div>

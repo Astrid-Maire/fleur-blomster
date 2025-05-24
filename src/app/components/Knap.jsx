@@ -8,7 +8,7 @@ export default function Knap({ produkt }) {
   const { tilføjTilKurv } = useKurv();
 
   const handleClick = () => {
-    if (!valgtStoerrelse) return;
+    if (!valgtStoerrelse) return; // Skal aldrig ske pga disabled knap
 
     const pris =
       valgtStoerrelse === "S"
@@ -24,27 +24,31 @@ export default function Knap({ produkt }) {
       pris,
       antal: 1,
     });
+
+    setValgtStoerrelse("");
   };
 
   return (
-    <div className="flex items-center gap-2">
+    <div className="flex items-center gap-2 font-libre">
       <select
         value={valgtStoerrelse}
         onChange={(e) => setValgtStoerrelse(e.target.value)}
-        className="border p-1 rounded"
+        className="custom-border p-1"
       >
-        <option value="">Vælg størrelse</option>
-        <option value="S">Lille - {produkt.price_s} kr</option>
-        <option value="M">Mellem - {produkt.price_m} kr</option>
-        <option value="L">Stor - {produkt.price_l} kr</option>
+        <option value="">VÆLG STØRRELSE</option>
+        <option value="S">LILLE - {produkt.price_s} kr</option>
+        <option value="M">MELLEM - {produkt.price_m} kr</option>
+        <option value="L">STOR - {produkt.price_l} kr</option>
       </select>
 
       <button
         onClick={handleClick}
         disabled={!valgtStoerrelse}
-        className="bg-green-600 text-white px-3 py-1 rounded disabled:opacity-50"
+        className={`px-3 py-1 rounded text-[var(--baggrundsfarve)] white ${
+          valgtStoerrelse ? "min-knap" : "min-knap1"
+        }`}
       >
-        LÆG I KURV
+        {valgtStoerrelse ? "LÆG I KURV" : "VÆLG STØRRELSE"}
       </button>
     </div>
   );

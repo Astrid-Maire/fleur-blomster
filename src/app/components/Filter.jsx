@@ -40,7 +40,7 @@ export default function Filter({ selected, onChange }) {
         htmlFor="filter"
         className="block mb-2 pt-2 md:pt-0 font-semibold "
       >
-        Vælg kategori:
+        VÆLG KATEGORI:
       </label>
       {loading ? (
         <p>Indlæser kategorier...</p>
@@ -50,7 +50,7 @@ export default function Filter({ selected, onChange }) {
           value={selected}
           onChange={(e) => onChange(e.target.value)}
           className={`custom-border p-2 w-full appearance-none ${
-            selected !== "alle"
+            selected !== "ALLE"
               ? "bg-[var(--baggrundsfarve)] "
               : "bg-[var(--baggrundsfarve)]"
           }`}

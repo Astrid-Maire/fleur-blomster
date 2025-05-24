@@ -2,14 +2,14 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { useKurv } from "./KurvContext";
 
 export default function Valgmulighed({ onChange }) {
   const router = useRouter();
+  const { tilføjTilKurv } = useKurv();
 
   const [selected, setSelected] = useState("");
   const [preferences, setPreferences] = useState("");
-  const [cardMessage, setCardMessage] = useState("");
-  const [date, setDate] = useState("");
   const [error, setError] = useState(null);
 
   const anledninger = [
@@ -25,20 +25,12 @@ export default function Valgmulighed({ onChange }) {
     { label: "BARE FORDI", value: "justbecause" },
   ];
 
-  const today = new Date();
-  const maxDate = new Date();
-  maxDate.setDate(today.getDate() + 14);
-
-  const formatDate = (d) => d.toISOString().split("T")[0];
-
   const handleSelect = (value) => {
     const newValue = selected === value ? "" : value;
     setSelected(newValue);
     if (onChange) onChange(newValue);
     if (!newValue) {
       setPreferences("");
-      setCardMessage("");
-      setDate("");
     }
     setError(null);
   };
@@ -50,15 +42,22 @@ export default function Valgmulighed({ onChange }) {
       return;
     }
 
-    // Naviger til /beslutning med data i URL
-    const query = new URLSearchParams({
-      anledning: selected,
-      preferences,
-      cardMessage,
-      date,
-    }).toString();
+    // Opret anledning vare med præferencer
+    const anledningVare = {
+      id: "anledning-" + selected,
+      navn:
+        "Anledning: " + anledninger.find((a) => a.value === selected)?.label,
+      stoerrelse: "-",
+      pris: 0,
+      antal: 1,
+      info: {
+        præferencer: preferences,
+      },
+    };
 
-    router.push(`/pages/beslutning?${query}`);
+    tilføjTilKurv(anledningVare);
+
+    router.push("/pages/beslutning");
   };
 
   return (
