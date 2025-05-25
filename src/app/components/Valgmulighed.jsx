@@ -42,7 +42,6 @@ export default function Valgmulighed({ onChange }) {
       return;
     }
 
-    // Opret anledning vare med præferencer
     const anledningVare = {
       id: "anledning-" + selected,
       navn:

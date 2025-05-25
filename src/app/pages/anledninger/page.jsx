@@ -20,19 +20,22 @@ export default function Home() {
           priority
         />
 
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center w-full ">
-          <h2>WEBSHOP TIL FLEUR BLOMSTER</h2>
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center w-full px-4">
+          <h2 className="text-xl sm:text-3xl md:text-4xl ">
+            WEBSHOP TIL FLEUR BLOMSTER
+          </h2>
         </div>
       </div>
 
-      <div className="p-6">
-        <h2 className="text-4xl ">
+      <div className="p-6 sm:px-12 px-4">
+        <h2 className="text-2xl sm:text-4xl ">
           BLOMSTER TIL EN <br />
-          <span className="block text-right">HVER ANLEDNING</span>
+          <span className="block text-right ">HVER ANLEDNING</span>
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 container">
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8">
           <div className="w-full">
-            <p className="paragraph1">
+            <p className="paragraph1  mb-4">
               Velkommen til vores webshop, hvor du nemt kan bestille smukke
               buketter og blomsterdekorationer online. Livet er fyldt med
               særlige øjeblikke, som fortjener at blive husket. Hos Fleur
@@ -43,7 +46,7 @@ export default function Home() {
               særligt – de bringer glæde, nærvær og varme, og de skaber minder,
               der varer ved.
             </p>
-            <p className="paragraph1">
+            <p className="paragraph1 ">
               Vores nøje udvalgt sortiment af blomster, hvor hver stilk er valgt
               med omtanke. Vi binder buketter med alt fra klassiske roser i
               røde, hvide, lyserøde og orange nuancer til elegante lisianthus,
@@ -56,7 +59,7 @@ export default function Home() {
           </div>
 
           <div className="w-full">
-            <p className="paragraph1">
+            <p className="paragraph1 mb-4">
               Hos Fleur hjælper vi dig med at vælge farver der passer til
               anledningen, eller vi sammensætter en buket i smukke harmoniske
               toner for dig. Uanset om du foretrækker blide pasteller, dybe
@@ -64,12 +67,13 @@ export default function Home() {
               i harmoniske farvetoner, der passer til både anledning og
               personlig stil.
             </p>
-            <div className="p-4">
+            <div className="p-4 sm:p-6">
               <Valgmulighed onChange={handleValgmulighed} />
             </div>
           </div>
         </div>
       </div>
+
       <Anledninghovedbilleder />
     </>
   );

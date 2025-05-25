@@ -37,6 +37,7 @@
   --space-2xl: clamp(1.25rem, -0.2194rem + 7.3469vw, 5.75rem);
   --space-22xl: clamp(1.25rem, -0.2194rem + 14.3469vw, 10rem);
   --space-3xl: clamp(3.125rem, -0.5485rem + 18.3673vw, 14.375rem);
+  --space-33xl: clamp(3.125rem, -0.5485rem + 18.3673vw, 21.375rem);
 }
 
 @theme inline {
@@ -253,6 +254,19 @@ h6 {
   font-family: "Libre Baskerville", serif;
 }
 
+.min-knap2 {
+  background-color: var(--knapfarve);
+  color: var(--baggrundsfarve);
+  border: none;
+  padding: var(--space-3xs) var(--space-2xs);
+  font-size: var(--step--1);
+  border-radius: 8px;
+  display: inline-block;
+  text-align: center;
+  cursor: pointer;
+  font-family: "Libre Baskerville", serif;
+}
+
 .min-knap:hover {
   background-color: var(--mørkegrøn);
 }
@@ -290,6 +304,15 @@ h6 {
   border-color: var(--mørkegrøn);
 }
 
+.btn-selected1 {
+  background-color: var(--baggrundsfarve);
+  color: var(--tekstfarve);
+}
+
+.btn-selected2 {
+  background-color: var(--lysegrøn);
+}
+
 .custom-border {
   border: 0.1rem solid var(--mørkegrøn);
   border-radius: 0.4rem;
@@ -307,6 +330,26 @@ h6 {
   gap: 0.2rem;
   position: relative;
   z-index: 1;
+}
+
+.bg-responsive {
+  background-image: url("/images/blomster1.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .bg-responsive {
+    background-image: url("/images/blomster2.svg");
+  }
 }
 
 @media (min-width: 768px) {

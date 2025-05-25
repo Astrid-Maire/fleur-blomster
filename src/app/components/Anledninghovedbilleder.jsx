@@ -9,15 +9,24 @@ export default function Abledninghovedbilleder() {
 
   return (
     <div className="px-[var(--space-xl)] pb-[var(--space-m)]">
-      <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+      <div
+        className="
+          flex gap-4 overflow-x-auto sm:grid sm:grid-cols-2 lg:grid-cols-3
+          sm:overflow-visible
+        "
+      >
         {images.map((src, index) => (
-          <div key={index} className="relative w-full aspect-[5/5] ">
+          <div
+            key={index}
+            className="
+              relative flex-shrink-0 w-60 h-60 sm:w-full sm:aspect-[5/5]
+            "
+          >
             <Image
               src={src}
               alt={`Fleur blomster ${index + 1}`}
-              layout="fill"
-              objectFit="cover"
-              className=""
+              fill
+              className="object-cover rounded-lg"
               priority={index === 0}
             />
           </div>

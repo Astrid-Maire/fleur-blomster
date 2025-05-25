@@ -8,7 +8,7 @@ export default function Knap({ produkt }) {
   const { tilføjTilKurv } = useKurv();
 
   const handleClick = () => {
-    if (!valgtStoerrelse) return; // Skal aldrig ske pga disabled knap
+    if (!valgtStoerrelse) return;
 
     const pris =
       valgtStoerrelse === "S"

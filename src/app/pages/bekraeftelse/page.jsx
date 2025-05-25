@@ -27,21 +27,8 @@ export default function Betaling() {
           .join(" | ");
 
   return (
-    <div
-      className="px-[var(--space-3xl)] py-[var(--space-m)]"
-      style={{
-        backgroundImage: "url('/images/blomster1.svg')",
-        backgroundRepeat: "no-repeat",
-        backgroundSize: "cover",
-        minHeight: "100vh",
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-        alignItems: "center",
-        gap: "1rem",
-      }}
-    >
-      <h3 className="text-center text-2xl font-bold">Bekræftelse</h3>
+    <div className="px-[var(--space-3xl)] pt-[var(--space-3xs)] bg-responsive">
+      <h3 className="text-center text-2xl font-bold">BEKRÆDTELSE</h3>
 
       <p className="text-justify px-[var(--space-3xs)] max-w-2xl mx-auto py-[var(--space-s)] leading-relaxed">
         Tak for din bestilling. Vi har modtaget din ordre og betalingen er
@@ -55,10 +42,11 @@ export default function Betaling() {
         <br />
         <strong>Din bestilling:</strong> {kurvTekst}
       </p>
-
-      <button onClick={handleTilbage} className="min-knap mt-6">
-        TILBAGE TIL FORSIDEN
-      </button>
+      <div className="pb-[var(--space-2xl)]">
+        <button onClick={handleTilbage} className="min-knap mt-6 ">
+          TILBAGE TIL FORSIDEN
+        </button>
+      </div>
     </div>
   );
 }

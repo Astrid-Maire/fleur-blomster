@@ -11,7 +11,6 @@ export default function KurvMedBetal() {
 
   if (!kurvÅben) return null;
 
-  // Grupér produkter efter navn
   const grupperet = kurv.reduce((acc, item) => {
     if (!acc[item.navn]) acc[item.navn] = [];
     acc[item.navn].push(item);
@@ -24,12 +23,12 @@ export default function KurvMedBetal() {
   };
 
   return (
-    <div className="fixed top-16 right-4 bg-white shadow-xl border rounded p-4 w-80 max-h-[70vh] overflow-y-auto z-50">
+    <div className="fixed top-16 right-4 btn-selected1 shadow-xl custom-border p-4 w-80 max-h-[70vh] overflow-y-auto z-50">
       <div className="flex justify-between items-center mb-2">
-        <h2 className="text-lg font-bold">Din kurv</h2>
+        <h5 className="">DIN KURV</h5>
         <button
           onClick={() => setKurvÅben(false)}
-          className="text-red-500 font-bold text-sm"
+          className=""
           aria-label="Luk kurv"
         >
           ✕
@@ -52,14 +51,14 @@ export default function KurvMedBetal() {
                     <div className="flex gap-2">
                       <button
                         onClick={() => mindskeAntal(item.id, item.stoerrelse)}
-                        className="knap"
+                        className="min-knap2"
                         aria-label={`Mindsk antal af ${item.navn} størrelse ${item.stoerrelse}`}
                       >
                         -
                       </button>
                       <button
                         onClick={() => øgeAntal(item.id, item.stoerrelse)}
-                        className="knap"
+                        className="min-knap2"
                         aria-label={`Øg antal af ${item.navn} størrelse ${item.stoerrelse}`}
                       >
                         +

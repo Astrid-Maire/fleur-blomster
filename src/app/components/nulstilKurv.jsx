@@ -1,6 +1,6 @@
 "use client";
 
-import { useKurv } from "./KurvContext"; // Juster sti
+import { useKurv } from "./KurvContext";
 import { useRouter } from "next/navigation";
 
 export default function Betaling() {
@@ -13,16 +13,8 @@ export default function Betaling() {
   };
 
   return (
-    <div
-      style={
-        {
-          /* dine styles */
-        }
-      }
-    >
+    <div>
       <h3>Bekræftelse</h3>
-      {/* Vis kurvens indhold her hvis ønsket */}
-
       <button onClick={handleTilbage} className="min-knap">
         TILBAGE TIL FORSIDEN
       </button>

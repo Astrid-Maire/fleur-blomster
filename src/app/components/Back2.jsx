@@ -4,10 +4,7 @@ import { FaArrowLeftLong } from "react-icons/fa6";
 
 export default function BackArrow() {
   return (
-    <Link
-      href="/pages/beslutning"
-      className="flex items-center gap-2 mt-6 mb-12 text-blue-600 hover:text-blue-800 transition-colors duration-150"
-    >
+    <Link href="/pages/beslutning" className="flex items-center gap-2 ">
       <FaArrowLeftLong size={20} />
       <span>Tilbage</span>
     </Link>

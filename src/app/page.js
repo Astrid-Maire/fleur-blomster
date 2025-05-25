@@ -92,12 +92,6 @@ export default function Home() {
           </p>
         </div>
         <Scroll />
-        {/* skal være i footer */}
-        {showForm && (
-          <div className="  mt-4 rounded-xl shadow-lg">
-            <h3 className="text-xl font-bold mb-2">Tilmeld dig nyhedsbrevet</h3>
-          </div>
-        )}
       </div>
     </>
   );

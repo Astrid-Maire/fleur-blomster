@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { createClient } from "@supabase/supabase-js";
 import { useKurv } from "@/app/components/KurvContext";
 import { useRouter, useSearchParams } from "next/navigation";
+import Back2 from "@/app/components/Back2";
 
 // Supabase setup
 const supabase = createClient(
@@ -72,81 +73,99 @@ export default function BestilSide() {
   }
 
   return (
-    <div className="max-w-xl mx-auto px-4 py-8">
-      <h3 className="text-2xl mb-6">BESTIL BLOMSTER</h3>
+    <div className="py-[var(--space-m)] px-[var(--space-33xl)]">
+      <div className="absolute left-5 top-20">
+        <Back2 />
+      </div>
+      <div className=" mx-auto px-[var(--space-22xl)] py-[var(--space-l)] bg-[var(--lysegrøn)] rounded-xl shadow-md">
+        <form onSubmit={handleSubmit} className="space-y-4">
+          <input
+            name="fornavn"
+            placeholder="Fornavn"
+            value={formData.fornavn}
+            onChange={(e) =>
+              setFormData({ ...formData, fornavn: e.target.value })
+            }
+            className="rounded-lg p-2 w-full bg-[var(--baggrundsfarve)]"
+            required
+          />
+          <input
+            name="efternavn"
+            placeholder="Efternavn"
+            value={formData.efternavn}
+            onChange={(e) =>
+              setFormData({ ...formData, efternavn: e.target.value })
+            }
+            className="rounded-lg p-2 w-full bg-[var(--baggrundsfarve)]"
+            required
+          />
+          <input
+            name="email"
+            type="email"
+            placeholder="Email"
+            value={formData.email}
+            onChange={(e) =>
+              setFormData({ ...formData, email: e.target.value })
+            }
+            className="rounded-lg p-2 w-full bg-[var(--baggrundsfarve)]"
+            required
+          />
+          <input
+            name="telefon"
+            placeholder="Telefonnummer"
+            value={formData.telefon}
+            onChange={(e) =>
+              setFormData({ ...formData, telefon: e.target.value })
+            }
+            className="rounded-lg p-2 w-full bg-[var(--baggrundsfarve)]"
+            required
+          />
+          <input
+            type="date"
+            name="afhentningsdato"
+            value={formData.afhentningsdato}
+            min={new Date().toISOString().split("T")[0]}
+            max={
+              new Date(Date.now() + 14 * 24 * 60 * 60 * 1000)
+                .toISOString()
+                .split("T")[0]
+            }
+            onChange={(e) =>
+              setFormData({ ...formData, afhentningsdato: e.target.value })
+            }
+            className="rounded-lg p-2 w-full bg-[var(--baggrundsfarve)]"
+            required
+          />
+          <textarea
+            name="korttekst"
+            placeholder="Tekst til kortet (valgfrit)"
+            value={formData.korttekst}
+            onChange={(e) =>
+              setFormData({ ...formData, korttekst: e.target.value })
+            }
+            className="rounded-lg p-2 w-full bg-[var(--baggrundsfarve)]"
+          />
+          <p className=" text-justify">
+            Hos Fleur Blomster ønsker vi, at du bliver helt tilfreds med dine
+            blomster. Da vi arbejder med ferskvarer som blomster og planter,
+            gælder fortrydelsesretten ikke for disse produkter, da de hurtigt
+            kan blive forringet. Dette betyder, at du ikke kan fortryde dit køb,
+            når du bestiller blomster, der er specielt udvalgt eller bundet til
+            dig.
+          </p>
+          <p className=" text-justify">
+            Skulle du modtage en beskadiget ordre eller være utilfreds med
+            noget, står vi klar til at hjælpe. Kontakt os gerne, så vi kan finde
+            en løsning, der gør dig glad.{" "}
+          </p>
 
-      <form onSubmit={handleSubmit} className="space-y-4">
-        <input
-          name="fornavn"
-          placeholder="Fornavn"
-          value={formData.fornavn}
-          onChange={(e) =>
-            setFormData({ ...formData, fornavn: e.target.value })
-          }
-          className="border p-2 w-full"
-          required
-        />
-        <input
-          name="efternavn"
-          placeholder="Efternavn"
-          value={formData.efternavn}
-          onChange={(e) =>
-            setFormData({ ...formData, efternavn: e.target.value })
-          }
-          className="border p-2 w-full"
-          required
-        />
-        <input
-          name="email"
-          type="email"
-          placeholder="Email"
-          value={formData.email}
-          onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-          className="border p-2 w-full"
-          required
-        />
-        <input
-          name="telefon"
-          placeholder="Telefonnummer"
-          value={formData.telefon}
-          onChange={(e) =>
-            setFormData({ ...formData, telefon: e.target.value })
-          }
-          className="border p-2 w-full"
-          required
-        />
-        <input
-          type="date"
-          name="afhentningsdato"
-          value={formData.afhentningsdato}
-          min={new Date().toISOString().split("T")[0]}
-          max={
-            new Date(Date.now() + 14 * 24 * 60 * 60 * 1000)
-              .toISOString()
-              .split("T")[0]
-          }
-          onChange={(e) =>
-            setFormData({ ...formData, afhentningsdato: e.target.value })
-          }
-          className="border p-2 w-full"
-          required
-        />
-        <textarea
-          name="korttekst"
-          placeholder="Tekst til kortet (valgfrit)"
-          value={formData.korttekst}
-          onChange={(e) =>
-            setFormData({ ...formData, korttekst: e.target.value })
-          }
-          className="border p-2 w-full"
-        />
+          <button type="submit" className="min-knap">
+            SEND BESTILLING
+          </button>
+        </form>
 
-        <button type="submit" className="min-knap">
-          Send bestilling
-        </button>
-      </form>
-
-      {besked && <p className="mt-4 text-center">{besked}</p>}
+        {besked && <p className="mt-4 text-center">{besked}</p>}
+      </div>
     </div>
   );
 }

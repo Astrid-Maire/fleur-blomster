@@ -7,7 +7,8 @@ export default function Betaling() {
       style={{
         backgroundImage: "url('/images/blomster1.svg')",
         backgroundRepeat: "no-repeat",
-        backgroundSize: "cover",
+        backgroundPosition: "center", // Centrerer billedet
+        backgroundSize: "cover", // Fylder hele div'en og beskærer evt.
         height: "100vh",
         display: "flex",
         flexDirection: "column",
@@ -16,13 +17,15 @@ export default function Betaling() {
         gap: "1rem",
       }}
     >
-      <div>
-        <h3 className="text-center w-full">BESTIL BLOMSTERBUKET</h3>
-        <div className="relative max-w-2xl mx-auto px-[var(--space-3xs)] py-[var(--space-s)]">
-          <div className="absolute -left-70 top-0">
-            <Back1 />
-          </div>
-          <p className="text-justify leading-relaxed pb-[var(--space-m)]">
+      <div className="absolute left-0 top-20">
+        <Back1 />
+      </div>
+      <h3 className="text-center w-full text-lg sm:text-xl font-semibold mb-4">
+        BESTIL BLOMSTERBUKET
+      </h3>
+      <div className="px-4 sm:px-6 max-w-2xl mx-auto">
+        <div className="relative">
+          <p className="text-justify leading-relaxed pb-6 text-sm sm:text-base ">
             Hos Fleur Blomster kan du betale for dine blomster online eller i
             butikken. Når betalingen er gennemført, registrerer vi din
             bestilling, gemmer dine blomster og gør dem klar til afhentning
@@ -33,15 +36,17 @@ export default function Betaling() {
           </p>
         </div>
 
-        <div className="flex justify-center space-x-4 pb-[var(--space-22xl)]">
-          {/* Bestil uden betaling */}
+        <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4 pb-20">
           <Link href="/pages/bestil?flow=uden-betaling" passHref>
-            <button className="min-knap">BESTIL BLOMSTERNE</button>
+            <button className="min-knap w-full sm:w-auto">
+              BESTIL BLOMSTERNE
+            </button>
           </Link>
 
-          {/* Bestil med betaling */}
-          <Link href="/pages/bestil?flow=med-betaling" className="min-knap">
-            BESTIL BLOMSTERNE OG BETAL
+          <Link href="/pages/bestil?flow=med-betaling" passHref>
+            <button className="min-knap w-full sm:w-auto">
+              BESTIL BLOMSTERNE OG BETAL
+            </button>
           </Link>
         </div>
       </div>
