@@ -106,9 +106,9 @@ export default function ProduktDetalje() {
       "
             >
               <div className="p-1">
-                <h7 className="font-bold text-lg mb-2 uppercase">
+                <div className=" h7 font-bold text-lg mb-2 uppercase">
                   {item.name}
-                </h7>
+                </div>
               </div>
               <img
                 src={item.images}

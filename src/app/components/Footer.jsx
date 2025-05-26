@@ -5,7 +5,7 @@ export default function Footer() {
   return (
     <footer className="footer-span sticky flex flex-col md:flex-row flex-wrap justify-between items-center gap-[var(--space-l)] pb-3  pt-2 border-t-2 border-t-[var(--mørkegrøn)] px-[var(--space-l)]">
       <div className=" flex flex-col justify-center items-center order-1 md:order-2 w-full md:w-auto">
-        <a href="#">
+        <a href="/">
           <Image
             src={"/images/logo.svg"}
             alt="Fleur Blomster logo"
