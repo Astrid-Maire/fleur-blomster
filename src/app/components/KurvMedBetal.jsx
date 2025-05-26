@@ -22,6 +22,12 @@ export default function KurvMedBetal() {
     router.push("/pages/beslutning");
   };
 
+  const stoerrelseMap = {
+    s: "lille",
+    m: "mellem",
+    l: "stor",
+  };
+
   return (
     <div className="fixed top-16 right-4 btn-selected1 shadow-xl custom-border p-4 w-80 max-h-[70vh] overflow-y-auto z-50">
       <div className="flex justify-between items-center mb-2">
@@ -46,7 +52,8 @@ export default function KurvMedBetal() {
                 {varer.map((item, idx) => (
                   <li key={idx} className="flex justify-between items-center">
                     <span>
-                      {item.stoerrelse} – {item.antal} stk {item.pris} kr
+                      {stoerrelseMap[item.stoerrelse] || item.stoerrelse} –{" "}
+                      {item.antal} stk {item.pris} kr
                     </span>
                     <div className="flex gap-2">
                       <button

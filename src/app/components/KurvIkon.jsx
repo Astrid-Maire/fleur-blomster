@@ -13,7 +13,7 @@ export default function KurvIkon() {
     <button
       onClick={() => setKurvÅben(!kurvÅben)}
       aria-label="Åbn kurv"
-      className="fixed top-5 right-5 z-[9999] w-12 h-12 rounded-full flex items-center justify-center text-white"
+      className="fixed top-5 right-5 z-[9999] w-12 h-12 rounded-full flex items-center justify-center "
       style={{ backgroundColor: "var(--knapfarve)" }}
     >
       <ShoppingBagIcon className="w-6 h-6" />
