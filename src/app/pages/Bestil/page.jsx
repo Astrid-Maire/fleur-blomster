@@ -1,12 +1,10 @@
 "use client";
-
 import { useState, useEffect } from "react";
 import { createClient } from "@supabase/supabase-js";
 import { useKurv } from "@/app/components/KurvContext";
 import { useRouter, useSearchParams } from "next/navigation";
 import Back2 from "@/app/components/Back2";
 
-// Supabase setup
 const supabase = createClient(
   "https://xraaztpjtcujqbtvczfb.supabase.co",
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhyYWF6dHBqdGN1anFidHZjemZiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDY0NDM1NDEsImV4cCI6MjA2MjAxOTU0MX0.mGlP9vpADg4GTzzvNWy9jM8UQOfe-JKbH-o66kLKKoA"
@@ -26,12 +24,11 @@ export default function BestilSide() {
   const [besked, setBesked] = useState("");
   const router = useRouter();
   const searchParams = useSearchParams();
-  const flow = searchParams.get("flow"); // 'med-betaling' eller 'uden-betaling'
+  const flow = searchParams.get("flow");
 
   async function handleSubmit(e) {
     e.preventDefault();
 
-    // Find anledning i kurven (hvis relevant)
     const anledningItem = kurv.find((item) =>
       item.id?.startsWith("anledning-")
     );
@@ -53,7 +50,6 @@ export default function BestilSide() {
     } else {
       setBesked("Din bestilling er sendt!");
 
-      // Nulstil form
       setFormData({
         fornavn: "",
         efternavn: "",
@@ -63,7 +59,6 @@ export default function BestilSide() {
         korttekst: "",
       });
 
-      // Redirect afhængigt af flow
       if (flow === "med-betaling") {
         router.push("/pages/betaling");
       } else {
