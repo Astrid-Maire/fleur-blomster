@@ -27,7 +27,7 @@ export default function Betaling() {
 
   return (
     <div className="px-[var(--space-3xl)] pt-[var(--space-3xs)] bg-responsive">
-      <h3 className="text-center text-2xl font-bold">BEKRÆDTELSE</h3>
+      <h3 className="text-center text-2xl font-bold">BEKRÆFTELSE</h3>
 
       <p className="text-justify md:px-[var(--space-3xs)] max-w-2xl mx-auto py-[var(--space-s)] leading-relaxed">
         Tak for din bestilling. Vi har modtaget din ordre og betalingen er
