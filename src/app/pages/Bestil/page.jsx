@@ -1,6 +1,9 @@
-// app/pages/Bestil/page.jsx
 import { Suspense } from "react";
-import BestilIndhold from "./BestilIndhold";
+import dynamic from "next/dynamic";
+
+const BestilIndhold = dynamic(() => import("./BestilIndhold"), {
+  ssr: false,
+});
 
 export default function Page() {
   return (
