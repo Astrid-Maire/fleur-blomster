@@ -1,5 +1,4 @@
 "use client";
-
 import { useState } from "react";
 import { createClient } from "@supabase/supabase-js";
 import { useKurv } from "@/app/components/KurvContext";

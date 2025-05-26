@@ -12,7 +12,6 @@ export default function Betaling() {
     router.push("/");
   };
 
-  // Lav kurvens indhold til en tekststreng
   const kurvTekst =
     kurv.length === 0
       ? "Kurven er tom."

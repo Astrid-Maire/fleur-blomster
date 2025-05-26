@@ -1,5 +1,4 @@
-"use client"; // Sørg for at denne fil er en client component
-
+"use client";
 import Image from "next/image";
 import BagrundsbilledetOm from "@/app/components/BagrundsbilledetOm";
 import Info from "@/app/components/Info";

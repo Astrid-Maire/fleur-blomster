@@ -1,9 +1,7 @@
 import { Suspense } from "react";
 import dynamic from "next/dynamic";
 
-const BestilIndhold = dynamic(() => import("./BestilIndhold"), {
-  ssr: false,
-});
+const BestilIndhold = dynamic(() => import("./BestilIndhold"), { ssr: false });
 
 export default function Page() {
   return (

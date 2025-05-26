@@ -7,8 +7,8 @@ export default function Betaling() {
       style={{
         backgroundImage: "url('/images/blomster1.svg')",
         backgroundRepeat: "no-repeat",
-        backgroundPosition: "center", // Centrerer billedet
-        backgroundSize: "cover", // Fylder hele div'en og beskærer evt.
+        backgroundPosition: "center",
+        backgroundSize: "cover",
         height: "100vh",
         display: "flex",
         flexDirection: "column",
