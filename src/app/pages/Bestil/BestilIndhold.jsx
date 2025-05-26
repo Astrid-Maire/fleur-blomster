@@ -2,7 +2,8 @@
 import { useState } from "react";
 import { createClient } from "@supabase/supabase-js";
 import { useKurv } from "@/app/components/KurvContext";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 import Back2 from "@/app/components/Back2";
 
 const supabase = createClient(
