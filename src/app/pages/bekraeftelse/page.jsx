@@ -30,7 +30,7 @@ export default function Betaling() {
     <div className="px-[var(--space-3xl)] pt-[var(--space-3xs)] bg-responsive">
       <h3 className="text-center text-2xl font-bold">BEKRÆDTELSE</h3>
 
-      <p className="text-justify px-[var(--space-3xs)] max-w-2xl mx-auto py-[var(--space-s)] leading-relaxed">
+      <p className="text-justify md:px-[var(--space-3xs)] max-w-2xl mx-auto py-[var(--space-s)] leading-relaxed">
         Tak for din bestilling. Vi har modtaget din ordre og betalingen er
         gennemført. Du vil snart modtage en bekræftelse på e-mail med alle
         detaljer. Vi går nu i gang med at klargøre din bestilling, og vi sørger
@@ -43,7 +43,7 @@ export default function Betaling() {
         <strong>Din bestilling:</strong> {kurvTekst}
       </p>
       <div className="pb-[var(--space-2xl)]">
-        <button onClick={handleTilbage} className="min-knap mt-6 ">
+        <button onClick={handleTilbage} className="min-knap pb-10 ">
           TILBAGE TIL FORSIDEN
         </button>
       </div>

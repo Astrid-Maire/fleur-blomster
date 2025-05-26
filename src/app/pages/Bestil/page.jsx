@@ -73,11 +73,12 @@ export default function BestilSide() {
   }
 
   return (
-    <div className="py-[var(--space-m)] px-[var(--space-33xl)]">
-      <div className="absolute left-5 top-20">
+    <div className="py-4 px-4 sm:py-[var(--space-m)] sm:px-[var(--space-33xl)] relative">
+      <div className="relative z-10  sm:absolute sm:left-5 sm:top-20 sm:mb-0">
         <Back2 />
       </div>
-      <div className=" mx-auto px-[var(--space-22xl)] py-[var(--space-l)] bg-[var(--lysegrøn)] rounded-xl shadow-md">
+
+      <div className="mx-auto px-4 py-4 sm:px-[var(--space-22xl)] sm:py-[var(--space-l)] bg-[var(--lysegrøn)] rounded-xl shadow-md relative z-0">
         <form onSubmit={handleSubmit} className="space-y-4">
           <input
             name="fornavn"
@@ -145,7 +146,7 @@ export default function BestilSide() {
             }
             className="rounded-lg p-2 w-full bg-[var(--baggrundsfarve)]"
           />
-          <p className=" text-justify">
+          <p className="text-justify">
             Hos Fleur Blomster ønsker vi, at du bliver helt tilfreds med dine
             blomster. Da vi arbejder med ferskvarer som blomster og planter,
             gælder fortrydelsesretten ikke for disse produkter, da de hurtigt
@@ -153,10 +154,10 @@ export default function BestilSide() {
             når du bestiller blomster, der er specielt udvalgt eller bundet til
             dig.
           </p>
-          <p className=" text-justify">
+          <p className="text-justify">
             Skulle du modtage en beskadiget ordre eller være utilfreds med
             noget, står vi klar til at hjælpe. Kontakt os gerne, så vi kan finde
-            en løsning, der gør dig glad.{" "}
+            en løsning, der gør dig glad.
           </p>
 
           <button type="submit" className="min-knap">

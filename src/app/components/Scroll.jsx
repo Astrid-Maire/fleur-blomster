@@ -58,12 +58,14 @@ export default function ScrollGallery() {
 
       <button
         onClick={() => scroll("left")}
+        aria-label="Rul til venstre"
         className="hidden sm:flex items-center justify-center absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 bg-[var(--baggrundsfarve)] rounded-full shadow p-2 hover:bg-[var(--knapfarve)] transition"
       >
         <ArrowLeft size={20} />
       </button>
       <button
         onClick={() => scroll("right")}
+        aria-label="Rul til højre"
         className="hidden sm:flex items-center justify-center absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 bg-[var(--baggrundsfarve)] rounded-full shadow p-2 hover:bg-[var(--knapfarve)] transition"
       >
         <ArrowRight size={20} />

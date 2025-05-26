@@ -12,12 +12,11 @@ import { usePathname } from "next/navigation";
 export default function RootLayout({ children }) {
   const pathname = usePathname();
 
-  // Skjul KurvIkon hvis vi er på /bestil siden
   const visKurvIkon = pathname !== "/bestil";
 
   return (
     <html lang="da">
-      <Head>{/* fonts */}</Head>
+      <Head>Fleur blomster </Head>
       <body className="antialiased relative">
         <KurvProvider>
           <Header />

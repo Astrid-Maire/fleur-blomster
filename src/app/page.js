@@ -70,7 +70,7 @@ export default function Home() {
 
         <Baggrundsbillede />
         <div className="container-1">
-          <h3 className="text-4xl  mt-var(--space-2xs) ">
+          <h3 className="text-4xl  mt-var(--space-xs) ">
             FIND DIN NÆSTE <br />
             <div className="block text-right break-words">BLOMSTERFAVORIT </div>
           </h3>

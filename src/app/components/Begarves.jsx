@@ -11,7 +11,7 @@ const FlowerGallery = () => {
   ];
 
   return (
-    <div className="flex flex-col gap-1 md:gap-4 px-[var(--space-xl)] md:py-0 py-[var(--space-l)]">
+    <div className="flex flex-col gap-1 md:gap-4 md:pb-[var(--space-s)] md:py-0 py-[var(--space-xs)] md:px-[var(--space-xl)] ">
       <div className="grid grid-cols-20 gap-1 md:gap-4">
         <div className="col-span-12">
           <Image

@@ -88,12 +88,22 @@ export default function ProduktDetalje() {
         <h4 className="font-semibold uppercase mb-4">
           Du kunne måske også lide
         </h4>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div
+          className="
+    flex overflow-x-auto gap-6 py-2
+    sm:grid sm:grid-cols-2 sm:gap-6 sm:overflow-visible sm:flex-none
+    lg:grid-cols-3
+  "
+        >
           {forslag.map((item) => (
             <Link
               key={item.id}
-              href={`/produkt/${item.id}`}
-              className="block custom-border rounded-lg overflow-hidden shadow-sm hover:shadow-md transition"
+              href={`/pages/shop/${item.id}`}
+              className="
+        min-w-[300px] flex-shrink-0 
+        sm:min-w-auto sm:flex-shrink-0
+        block custom-border rounded-lg overflow-hidden shadow-sm hover:shadow-md transition
+      "
             >
               <div className="p-1">
                 <h7 className="font-bold text-lg mb-2 uppercase">

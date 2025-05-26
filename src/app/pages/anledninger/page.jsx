@@ -27,13 +27,13 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="p-6 sm:px-12 px-4">
+      <div className="p-6  px-4">
         <h2 className="text-2xl sm:text-4xl ">
           BLOMSTER TIL EN <br />
           <span className="block text-right ">HVER ANLEDNING</span>
         </h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 px-[var(--space-xl)]">
           <div className="w-full">
             <p className="paragraph1  mb-4">
               Velkommen til vores webshop, hvor du nemt kan bestille smukke

@@ -24,23 +24,23 @@ export default function Bekraeftelse() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Her skal du sende data til en betalingsgateway som Stripe
     alert("Betalingsinfo sendt (ikke rigtigt – demo)");
 
-    // Efter betaling, naviger til bekræftelsesside
     router.push("/pages/bekraeftelse");
   };
 
   return (
     <div>
-      <Back3 />
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center px-4">
+      <div className="relative z-10 sm:absolute sm:left-5 sm:top-20 sm:mb-0">
+        <Back3 />
+      </div>
+      <div className="py-[var(--space-xl)] px-4  sm:py-[var(--space-xs)] sm:px-[var(--space-33xl)] relative sm:min-h-screen bg-[var(--baggrundsfarve)] flex md:items-center sm:justify-center">
         <form
           onSubmit={handleSubmit}
-          className="bg-white shadow-md rounded px-8 pt-6 pb-8 w-full max-w-md"
+          className="bg-[var(--lysegrøn)] shadow-md rounded-xl px-6 py-6 sm:py-[var(--space-l)] w-full max-w-lg relative z-0"
         >
-          <h4 className="text-2xl font-bold mb-6 text-center">
-            Betal med kort
+          <h4 className="text-2xl font-bold mb-6 text-center ">
+            BETAL MED KORT
           </h4>
 
           <div className="mb-4">
@@ -54,7 +54,7 @@ export default function Bekraeftelse() {
               value={kortData.navn}
               onChange={handleChange}
               required
-              className="w-full border border-gray-300 p-2 rounded"
+              className="w-full rounded-lg p-2 bg-[var(--baggrundsfarve)] border border-gray-300"
             />
           </div>
 
@@ -73,7 +73,7 @@ export default function Bekraeftelse() {
               inputMode="numeric"
               placeholder="1234 5678 9012 3456"
               required
-              className="w-full border border-gray-300 p-2 rounded"
+              className="w-full rounded-lg p-2 bg-[var(--baggrundsfarve)] border border-gray-300"
             />
           </div>
 
@@ -91,7 +91,7 @@ export default function Bekraeftelse() {
                 placeholder="MM/ÅÅ"
                 pattern="\d{2}/\d{2}"
                 required
-                className="w-full border border-gray-300 p-2 rounded"
+                className="w-full rounded-lg p-2 bg-[var(--baggrundsfarve)] border border-gray-300"
               />
             </div>
 
@@ -109,13 +109,13 @@ export default function Bekraeftelse() {
                 pattern="\d*"
                 inputMode="numeric"
                 required
-                className="w-full border border-gray-300 p-2 rounded"
+                className="w-full rounded-lg p-2 bg-[var(--baggrundsfarve)] border border-gray-300"
               />
             </div>
           </div>
 
-          <button type="submit" className="min-knap">
-            Betal
+          <button type="submit" className="min-knap w-full">
+            BETAL
           </button>
         </form>
       </div>
