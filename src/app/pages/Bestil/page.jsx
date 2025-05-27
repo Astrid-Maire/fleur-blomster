@@ -1,16 +1,31 @@
 "use client";
 
-import { Suspense } from "react";
-import dynamic from "next/dynamic";
+import "./globals.css";
+import Header from "@/app/components/Header";
+import Footer from "./components/Footer";
+import { KurvProvider } from "./components/KurvContext";
+import KurvIkon from "./components/KurvIkon";
+import KurvMedBetal from "./components/KurvMedBetal";
+import Head from "next/head";
+import { usePathname } from "next/navigation";
 
-const BestilIndhold = dynamic(() => import("./BestilIndhold"), {
-  ssr: false,
-});
+export default function RootLayout({ children }) {
+  const pathname = usePathname();
 
-export default function Page() {
+  const visKurvIkon = pathname !== "/pages/bestil";
+
   return (
-    <Suspense fallback={<div>Indlæser bestillingsside...</div>}>
-      <BestilIndhold />
-    </Suspense>
+    <html lang="da">
+      <Head>Fleur blomster </Head>
+      <body className="antialiased relative">
+        <KurvProvider>
+          <Header />
+          {children}
+          {visKurvIkon && <KurvIkon />}
+          <KurvMedBetal />
+          <Footer />
+        </KurvProvider>
+      </body>
+    </html>
   );
 }
