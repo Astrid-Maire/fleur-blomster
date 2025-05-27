@@ -41,7 +41,7 @@ export default function Betaling() {
             <a className="min-knap w-full sm:w-auto">BESTIL BLOMSTERNE</a>
           </Link>
 
-          <Link href="/pages/bestil?flow=med-betaling" passHref>
+          <Link href="/pages/bestil?flow=med-betaling" passHref legacyBehavior>
             <a className="min-knap w-full sm:w-auto">
               BESTIL BLOMSTERNE OG BETAL
             </a>
