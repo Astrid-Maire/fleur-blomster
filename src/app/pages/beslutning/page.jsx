@@ -37,16 +37,14 @@ export default function Betaling() {
         </div>
 
         <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4 pb-20">
-          <Link href="/pages/bestil?flow=uden-betaling" passHref>
-            <button className="min-knap w-full sm:w-auto">
-              BESTIL BLOMSTERNE
-            </button>
+          <Link href="/pages/bestil?flow=uden-betaling" passHref legacyBehavior>
+            <a className="min-knap w-full sm:w-auto">BESTIL BLOMSTERNE</a>
           </Link>
 
           <Link href="/pages/bestil?flow=med-betaling" passHref>
-            <button className="min-knap w-full sm:w-auto">
+            <a className="min-knap w-full sm:w-auto">
               BESTIL BLOMSTERNE OG BETAL
-            </button>
+            </a>
           </Link>
         </div>
       </div>
