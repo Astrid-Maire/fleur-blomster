@@ -49,15 +49,22 @@ export default function NewsletterForm({ onSuccess }) {
     <form
       onSubmit={handleSubmit}
       className="
-        fixed h-[75%] inset-0 z-[1000] flex  justify-center px-[var(--space-l)] p-[var(--space-m)] bg-[url('/images/blomster.svg')] bg-no-repeat bg-center   bg-opacity-80"
+        fixed inset-0 z-[1000] flex items-center justify-center
+        px-[var(--space-l)] p-[var(--space-m)]
+        bg-transparent
+      "
     >
-      <div className="   rounded-xl  text-center  ">
-        <h6 className="text-4xl pb-[var(--space-xl)] w-full pt-[var(--space-m)]">
+      <div
+        className="
+          rounded-xl text-center p-8 w-full max-w-md
+          bg-[url('/images/blomster.svg')] bg-no-repeat bg-center bg-cover
+        "
+      >
+        <h6 className="text-4xl pb-[var(--space-xl)] w-full pt-[var(--space-m)] uppercase">
           Tilmeld dig vores nyhedsbrev
         </h6>
-
         {error && <p className="text-red-600 mb-3">{error}</p>}
-        <div className="px-[var(--space-22xl)] max-w-3xl">
+        <div className="max-w-full">
           <div className="pb-[var(--space-s)]">
             <input
               type="text"
@@ -65,7 +72,7 @@ export default function NewsletterForm({ onSuccess }) {
               placeholder="Dit navn"
               value={formData.name}
               onChange={handleChange}
-              className="w-full p-2 mb-3 border rounded-md  px-[var(--space-m)]"
+              className="w-full p-2 mb-3 border rounded-md px-[var(--space-m)]"
             />
           </div>
           <div className="pb-[var(--space-s)]">
@@ -79,13 +86,7 @@ export default function NewsletterForm({ onSuccess }) {
             />
           </div>
         </div>
-        <button
-          type="submit"
-          disabled={loading}
-          className="
-            min-knap
-          "
-        >
+        <button type="submit" disabled={loading} className="min-knap">
           {loading ? "Sender..." : "Tilmeld"}
         </button>
       </div>

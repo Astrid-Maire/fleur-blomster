@@ -26,10 +26,12 @@ const NewsletterPopup = ({ onClose, onSubscribe }) => {
   if (!isVisible) return null;
 
   return (
-    <div className="fixed h-[75%] inset-0 z-[1000] flex  justify-center px-[var(--space-l)] p-[var(--space-m)] bg-[url('/images/blomster.svg')] bg-no-repeat bg-center   bg-opacity-80">
-      <div className=" max-w-2xl rounded-xl  text-center  ">
-        <h6 className="text-4xl ">Tilmeld dig vores nyhedsbrev</h6>
-        <div className=" h7 px-[var(--space-m)] pt-[var(--space-xs)]">
+    <div className="fixed inset-0 z-[1000] flex items-center justify-center pointer-events-none">
+      <div className="pointer-events-auto w-full max-w-2xl mx-4 p-6 rounded-xl backdrop-blur-md bg-[url('/images/blomster.svg')] bg-cover bg-center bg-no-repeat shadow-lg text-center">
+        <h6 className="text-2xl sm:text-3xl md:text-4xl mb-4 uppercase">
+          Tilmeld dig vores nyhedsbrev
+        </h6>
+        <div className="text-sm sm:text-base px-[var(--space-m)] pt-[var(--space-xs)]">
           Hos Fleur Blomster brænder vi for at dele vores kærlighed til blomster
           med dig. Når du tilmelder dig vores nyhedsbrev, får du adgang til
           sæsonens smukkeste buketter, inspirerende idéer og nyttige tips til
@@ -38,19 +40,19 @@ const NewsletterPopup = ({ onClose, onSubscribe }) => {
           nyhedsbrevsmodtager er du også blandt de første til at få nyheder om
           kommende events og eksklusive tilbud.
         </div>
-        <div className="h7 pt-[var(--space-s)] pb-[var(--space-s)] px-[var(--space-m)] ">
+        <div className="text-sm sm:text-base pt-[var(--space-s)] pb-[var(--space-s)] px-[var(--space-m)]">
           Tilmeld dig i dag og lad os bringe naturens skønhed direkte ind i din
           hverdag – fyldt med farver, inspiration og glæde.
         </div>
-        <div className="flex justify-center gap-4 mt-4">
+        <div className="flex  flex-row justify-center gap-4 mt-4">
           <button
             onClick={handleClose}
-            className="bg-gray-300 text-[var(--tekstfarve)] px-4 py-2 rounded-lg hover:bg-gray-400"
+            className="bg-gray-300 text-[var(--tekstfarve)] ] py-1 md:py-2 rounded-lg px-2 hover:bg-gray-400"
           >
-            Måske senere
+            MÅSKE SENERE
           </button>
-          <button onClick={handleSubscribe} className="min-knap">
-            Ja tak
+          <button onClick={handleSubscribe} className="min-knap px-2">
+            JA TAK
           </button>
         </div>
       </div>
