@@ -1,7 +1,6 @@
 "use client";
+
 import { useEffect, useRef } from "react";
-import L from "leaflet";
-import "leaflet/dist/leaflet.css";
 
 export default function Kort() {
   const mapRef = useRef(null);
@@ -13,66 +12,74 @@ export default function Kort() {
   const labelLng = lng;
 
   useEffect(() => {
-    if (!mapRef.current || mapRef.current._leaflet_id) return;
+    let L; // leaflet modulet
 
-    const map = L.map(mapRef.current, {
-      center: [lat, lng],
-      zoom: 20,
-      scrollWheelZoom: false,
-      zoomControl: false,
-    });
+    async function loadMap() {
+      if (!mapRef.current || mapRef.current._leaflet_id) return;
 
-    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-      attribution: "&copy; OpenStreetMap",
-    }).addTo(map);
+      // Dynamisk import af leaflet og css
+      const leaflet = await import("leaflet");
+      L = leaflet.default;
 
-    L.control
-      .zoom({
-        position: "bottomright",
-      })
-      .addTo(map);
+      await import("leaflet/dist/leaflet.css");
 
-    const redDotIcon = L.divIcon({
-      className: "",
-      html: `<div style="
-        width: 12px;
-        height: 12px;
-        background: var(--mørkegrøn);
-        border-radius: 50%;
-      "></div>`,
-      iconSize: [16, 16],
-      iconAnchor: [8, 8],
-    });
+      const map = L.map(mapRef.current, {
+        center: [lat, lng],
+        zoom: 20,
+        scrollWheelZoom: false,
+        zoomControl: false,
+      });
 
-    L.marker([lat, lng], { icon: redDotIcon }).addTo(map);
+      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        attribution: "&copy; OpenStreetMap",
+      }).addTo(map);
 
-    const labelIcon = L.divIcon({
-      className: "",
-      html: `
-        <div style="
-          background: var(--baggrundsfarve);
-          border: 1px solid var(--mørkegrøn);
-          padding: var(--space-xs); 
-          border-radius: 6px;
-          font-size: 1rem; 
-          font-weight: 500;
-          user-select: none;
-          font-family: 'Playfair Display', serif;
-          width: max-content;
-          max-width: 240px; 
-        ">
-          Fleur Blomster<br />
-          Trørødvej 67, 2950 Vedbæk
-        </div>
-      `,
-      iconSize: [180, 50],
-      iconAnchor: [90, 50],
-    });
+      L.control.zoom({ position: "bottomright" }).addTo(map);
 
-    L.marker([labelLat, labelLng], {
-      icon: labelIcon,
-      interactive: false,
-    }).addTo(map);
+      const redDotIcon = L.divIcon({
+        className: "",
+        html: `<div style="
+          width: 12px;
+          height: 12px;
+          background: var(--mørkegrøn);
+          border-radius: 50%;
+        "></div>`,
+        iconSize: [16, 16],
+        iconAnchor: [8, 8],
+      });
+
+      L.marker([lat, lng], { icon: redDotIcon }).addTo(map);
+
+      const labelIcon = L.divIcon({
+        className: "",
+        html: `
+          <div style="
+            background: var(--baggrundsfarve);
+            border: 1px solid var(--mørkegrøn);
+            padding: var(--space-xs); 
+            border-radius: 6px;
+            font-size: 1rem; 
+            font-weight: 500;
+            user-select: none;
+            font-family: 'Playfair Display', serif;
+            width: max-content;
+            max-width: 240px; 
+          ">
+            Fleur Blomster<br />
+            Trørødvej 67, 2950 Vedbæk
+          </div>
+        `,
+        iconSize: [180, 50],
+        iconAnchor: [90, 50],
+      });
+
+      L.marker([labelLat, labelLng], {
+        icon: labelIcon,
+        interactive: false,
+      }).addTo(map);
+    }
+
+    loadMap();
   }, []);
 
   return (
