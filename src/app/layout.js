@@ -10,7 +10,7 @@ import { usePathname } from "next/navigation";
 
 export default function RootLayout({ children }) {
   const pathname = usePathname();
-  const visKurvIkon = pathname !== "/pages/bestil";
+  const visKurvIkon = pathname !== "/bestil";
 
   return (
     <html lang="da">
