@@ -1,17 +1,15 @@
 "use client";
 
+/* 
 import { useState } from "react";
 import { createClient } from "@supabase/supabase-js";
 import { useKurv } from "@/app/components/KurvContext";
 import { useRouter, useSearchParams } from "next/navigation";
 import Back2 from "@/app/components/Back2";
-
-
-
-
+*/
 
 export default function Bestil() {
-  return <div />; // Eller bare: return null;
+  return <div>Side under opbygning</div>;
 }
 /* const supabase = createClient(
   "https://xraaztpjtcujqbtvczfb.supabase.co",
