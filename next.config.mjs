@@ -1,6 +1,6 @@
 export default {
   reactStrictMode: true,
   images: {
-    domains: ["cdn.dummyjson.com"],
+    domains: ["api.mydomain.com", "cdn.something.com"],
   },
 };
