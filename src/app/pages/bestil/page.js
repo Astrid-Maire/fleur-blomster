@@ -1,4 +1,4 @@
-import BestilIndhold from "@/app/components/Back1";
+import BestilIndhold from "@/app/components/BestilIndhold";
 
 export default function BestilPage() {
   return <BestilIndhold />;
