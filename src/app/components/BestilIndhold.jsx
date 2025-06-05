@@ -60,7 +60,6 @@ export default function BestilIndhold() {
         korttekst: "",
       });
 
-      // Redirect baseret på flow-parameter
       if (flow === "med-betaling") {
         router.push("/betaling");
       } else {
@@ -71,12 +70,10 @@ export default function BestilIndhold() {
 
   return (
     <div className="py-4 px-4 sm:py-[var(--space-m)] sm:px-[var(--space-33xl)] relative min-h-screen bg-white">
-      {/* Back2 knap - positioneret øverst til venstre */}
       <div className="absolute left-5 top-20 z-20">
         <Back2 />
       </div>
 
-      {/* Formular container */}
       <div className="mx-auto px-4 py-6 sm:px-[var(--space-22xl)] sm:py-[var(--space-l)] bg-[var(--lysegrøn)] rounded-xl shadow-md relative z-10 max-w-xl">
         <form onSubmit={handleSubmit} className="space-y-4">
           <input
