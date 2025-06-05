@@ -6,17 +6,14 @@ import Footer from "@/app/components/Footer";
 import { KurvProvider } from "@/app/components/KurvContext";
 import KurvIkon from "@/app/components/KurvIkon";
 import KurvMedBetal from "@/app/components/KurvMedBetal";
-import Head from "next/head";
 import { usePathname } from "next/navigation";
 
 export default function RootLayout({ children }) {
   const pathname = usePathname();
-
   const visKurvIkon = pathname !== "/pages/bestil";
 
   return (
     <html lang="da">
-      <Head>Fleur blomster </Head>
       <body className="antialiased relative">
         <KurvProvider>
           <Header />
@@ -29,4 +26,3 @@ export default function RootLayout({ children }) {
     </html>
   );
 }
-("");
