@@ -1,14 +1,14 @@
 "use client";
 
 import { useState } from "react";
-import { useRouter } from "next/navigation";
 import { createClient } from "@supabase/supabase-js";
 import { useKurv } from "@/app/components/KurvContext";
+import { useRouter } from "next/navigation";
 import Back2 from "@/app/components/Back2";
 
 const supabase = createClient(
   "https://xraaztpjtcujqbtvczfb.supabase.co",
-  "SUPABASE_KEY"
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhyYWF6dHBqdGN1anFidHZjemZiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDY0NDM1NDEsImV4cCI6MjA2MjAxOTU0MX0.mGlP9vpADg4GTzzvNWy9jM8UQOfe-JKbH-o66kLKKoA"
 );
 
 export default function BestilIndhold({ flow }) {
@@ -22,8 +22,8 @@ export default function BestilIndhold({ flow }) {
   });
 
   const { kurv } = useKurv();
-  const router = useRouter();
   const [besked, setBesked] = useState("");
+  const router = useRouter();
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -31,7 +31,6 @@ export default function BestilIndhold({ flow }) {
     const anledningItem = kurv.find((item) =>
       item.id?.startsWith("anledning-")
     );
-
     const anledning = anledningItem?.navn || "";
     const preferences = anledningItem?.info?.præferencer || "";
 
@@ -42,10 +41,10 @@ export default function BestilIndhold({ flow }) {
       kurv,
     };
 
-    const { error } = await supabase.from("orders").insert([samletKurv]);
+    const { data, error } = await supabase.from("orders").insert([samletKurv]);
 
     if (error) {
-      console.error("Fejl ved bestilling:", error);
+      console.error("Fejl ved bestilling:", JSON.stringify(error, null, 2));
       setBesked("Fejl ved bestilling. Prøv igen.");
     } else {
       setBesked("Din bestilling er sendt!");
