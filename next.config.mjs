@@ -3,8 +3,7 @@ const nextConfig = {
 
   images: {
     domains: [
-      "dit-api-domæne.dk", // udskift med domænet hvor billederne hostes
-      "another-domain.com", // hvis der er flere domæner
+      "xraaztpjtcujqbtvczfb.supabase.co", // dit Supabase domæne
     ],
   },
 };
