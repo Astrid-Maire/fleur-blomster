@@ -3,6 +3,14 @@ import Image from "next/image";
 import BagrundsbilledetOm from "@/app/components/BagrundsbilledetOm";
 import Info from "@/app/components/Info";
 import Kort from "@/app/components/Kort";
+import dynamic from "next/dynamic";
+
+const BagrundsbilledetOm = dynamic(
+  () => import("@/app/components/BagrundsbilledetOm"),
+  { ssr: false }
+);
+const Info = dynamic(() => import("@/app/components/Info"), { ssr: false });
+const Kort = dynamic(() => import("@/app/components/Kort"), { ssr: false });
 
 export default function Home() {
   return (

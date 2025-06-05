@@ -3,18 +3,10 @@
 import Image from "next/image";
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import dynamic from "next/dynamic";
 
 export default function InspirationSection() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
-
-  const BagrundsbilledetOm = dynamic(
-    () => import("@/app/components/BagrundsbilledetOm"),
-    { ssr: false }
-  );
-  const Info = dynamic(() => import("@/app/components/Info"), { ssr: false });
-  const Kort = dynamic(() => import("@/app/components/Kort"), { ssr: false });
 
   return (
     <div className="relative w-full min-h-[800px]" ref={ref}>
