@@ -17,7 +17,7 @@ export default function KurvIkon() {
       style={{ backgroundColor: "var(--knapfarve)" }}
     >
       <ShoppingBagIcon className="w-6 h-6" />
-      <span className="absolute top-1 right-1 bg-red-600 text-white rounded-full w-5 h-5 text-xs font-bold flex items-center justify-center pointer-events-none">
+      <span className="absolute top-1 right-1 bg-red-600  rounded-full w-5 h-5 text-xs font-bold flex items-center justify-center pointer-events-none">
         {totalAntal}
       </span>
     </button>
