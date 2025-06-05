@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { createClient } from "@supabase/supabase-js";
 import { useKurv } from "@/app/components/KurvContext";
-import { useRouter } from "next/router";
+import { useRouter, useSearchParams } from "next/navigation";
 import Back2 from "@/app/components/Back2";
 
 const supabase = createClient(
@@ -24,8 +24,8 @@ export default function BestilIndhold() {
   const { kurv } = useKurv();
   const [besked, setBesked] = useState("");
   const router = useRouter();
-
-  const flow = router.query.flow;
+  const searchParams = useSearchParams();
+  const flow = searchParams.get("flow");
 
   async function handleSubmit(e) {
     e.preventDefault();
