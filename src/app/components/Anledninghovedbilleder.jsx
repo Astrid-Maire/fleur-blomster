@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function Abledninghovedbilleder() {
   const images = [
-    "/images/blomster2.jpg",
+    "/images/blomsterv2.jpg",
     "/images/blomster4.jpg",
     "/images/blomster3.jpg",
   ];
