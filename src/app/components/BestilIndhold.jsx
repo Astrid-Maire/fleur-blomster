@@ -61,7 +61,7 @@ export default function BestilIndhold({ flow }) {
       if (flow === "med-betaling") {
         router.push("/betaling");
       } else {
-        router.push("/bekraeftelse");
+        router.push("/pages/bekraeftelse");
       }
     }
   }
