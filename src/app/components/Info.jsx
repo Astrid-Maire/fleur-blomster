@@ -1,5 +1,4 @@
 "use client";
-
 export default function OpeningHoursSection() {
   return (
     <section className="w-full px-[var(--space-xl)] py-[var(--space-xl)]">

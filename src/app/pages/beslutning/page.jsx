@@ -1,7 +1,12 @@
+"use client";
 import Link from "next/link";
 import Back1 from "@/app/components/Back1";
+import { useSearchParams } from "next/navigation";
 
 export default function Betaling() {
+  const searchParams = useSearchParams(); // Bruger hook til at hente søgeparametre fra URL
+  const flow = searchParams.get("flow"); // Tager værdien af flow-parameteren,
+
   return (
     <div
       style={{
@@ -37,19 +42,29 @@ export default function Betaling() {
         </div>
 
         <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4 pb-20">
-          <Link
-            href="/pages/bestil?flow=uden-betaling"
-            className="min-knap w-full sm:w-auto"
-          >
-            BESTIL BLOMSTERNE
-          </Link>
-
-          <Link
-            href="/pages/bestil?flow=med-betaling"
-            className="min-knap w-full sm:w-auto"
-          >
-            BESTIL BLOMSTERNE OG BETAL
-          </Link>
+          {flow === "uden-betaling" ? (
+            <Link
+              href="/pages/bestil?flow=uden-betaling"
+              className="min-knap w-full sm:w-auto"
+            >
+              BESTIL BLOMSTERNE
+            </Link>
+          ) : (
+            <>
+              <Link
+                href="/pages/bestil?flow=uden-betaling"
+                className="min-knap w-full sm:w-auto"
+              >
+                BESTIL BLOMSTERNE
+              </Link>
+              <Link
+                href="/pages/bestil?flow=med-betaling"
+                className="min-knap w-full sm:w-auto"
+              >
+                BESTIL BLOMSTERNE OG BETAL
+              </Link>
+            </>
+          )}
         </div>
       </div>
     </div>

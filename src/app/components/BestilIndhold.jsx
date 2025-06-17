@@ -1,17 +1,18 @@
 "use client";
-
 import { useState } from "react";
-import { createClient } from "@supabase/supabase-js";
-import { useKurv } from "@/app/components/KurvContext";
-import { useRouter } from "next/navigation";
-import Back2 from "@/app/components/Back2";
+import { createClient } from "@supabase/supabase-js"; // Supabase til databasekommunikation
+import { useKurv } from "@/app/components/KurvContext"; // Henter kurv (indkøbskurv) fra context
+import { useRouter } from "next/navigation"; // Til navigation efter formularafsendelse
+import Back2 from "@/app/components/Back2"; // Komponent til tilbage-knap
 
+// Initialiserer Supabase-klienten med URL og anonym nøgle
 const supabase = createClient(
   "https://xraaztpjtcujqbtvczfb.supabase.co",
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhyYWF6dHBqdGN1anFidHZjemZiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDY0NDM1NDEsImV4cCI6MjA2MjAxOTU0MX0.mGlP9vpADg4GTzzvNWy9jM8UQOfe-JKbH-o66kLKKoA"
 );
 
 export default function BestilIndhold({ flow }) {
+  // Initial tilstand for formularfelterne
   const [formData, setFormData] = useState({
     fornavn: "",
     efternavn: "",
@@ -21,19 +22,23 @@ export default function BestilIndhold({ flow }) {
     korttekst: "",
   });
 
-  const { kurv } = useKurv();
-  const [besked, setBesked] = useState("");
-  const router = useRouter();
+  const { kurv } = useKurv(); // Henter varer fra kurv
+  const [besked, setBesked] = useState(""); // Til feedbackbesked til bruger
+  const router = useRouter(); // Router til navigation
 
+  // Når formularen indsendes
   async function handleSubmit(e) {
     e.preventDefault();
 
+    // Finder første vare i kurv, som starter med "anledning-"
     const anledningItem = kurv.find((item) =>
       item.id?.startsWith("anledning-")
     );
+
     const anledning = anledningItem?.navn || "";
     const preferences = anledningItem?.info?.præferencer || "";
 
+    // Kombinerer brugerens oplysninger med kurvens data
     const samletKurv = {
       ...formData,
       anledning,
@@ -41,6 +46,7 @@ export default function BestilIndhold({ flow }) {
       kurv,
     };
 
+    // Indsætter ordre i "orders"-tabellen i Supabase
     const { data, error } = await supabase.from("orders").insert([samletKurv]);
 
     if (error) {
@@ -49,6 +55,7 @@ export default function BestilIndhold({ flow }) {
     } else {
       setBesked("Din bestilling er sendt!");
 
+      // Nulstiller formular
       setFormData({
         fornavn: "",
         efternavn: "",
@@ -58,10 +65,11 @@ export default function BestilIndhold({ flow }) {
         korttekst: "",
       });
 
+      // Navigerer afhængigt af flow-parameteren
       if (flow === "med-betaling") {
-        router.push("/betaling");
+        router.push("/pages/betaling");
       } else {
-        router.push("/bekraeftelse");
+        router.push("/pages/bekraeftelse");
       }
     }
   }
@@ -71,9 +79,9 @@ export default function BestilIndhold({ flow }) {
       <div className="relative z-10 sm:absolute sm:left-5 sm:top-20 sm:mb-0">
         <Back2 />
       </div>
-
       <div className="mx-auto px-4 py-4 sm:px-[var(--space-22xl)] sm:py-[var(--space-l)] bg-[var(--lysegrøn)] rounded-xl shadow-md relative z-0">
         <form onSubmit={handleSubmit} className="space-y-4">
+          {/* Felter til brugerens oplysninger */}
           <input
             name="fornavn"
             placeholder="Fornavn"
@@ -115,6 +123,7 @@ export default function BestilIndhold({ flow }) {
             className="rounded-lg p-2 w-full bg-[var(--baggrundsfarve)]"
             required
           />
+          {/* Afhentningsdato max til de næste 14 dage frem */}
           <input
             type="date"
             name="afhentningsdato"
@@ -131,6 +140,7 @@ export default function BestilIndhold({ flow }) {
             className="rounded-lg p-2 w-full bg-[var(--baggrundsfarve)]"
             required
           />
+          {/* Korttekst */}
           <textarea
             name="korttekst"
             placeholder="Tekst til kortet (valgfrit)"
@@ -153,12 +163,12 @@ export default function BestilIndhold({ flow }) {
             noget, står vi klar til at hjælpe. Kontakt os gerne, så vi kan finde
             en løsning, der gør dig glad.
           </p>
-
+          {/* Send-knap */}
           <button type="submit" className="min-knap">
             SEND BESTILLING
           </button>
         </form>
-
+        {/* Feedbackbesked efter submission */}
         {besked && <p className="mt-4 text-center">{besked}</p>}
       </div>
     </div>

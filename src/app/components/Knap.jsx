@@ -1,15 +1,16 @@
 "use client";
-
 import { useState } from "react";
 import { useKurv } from "./KurvContext";
 
 export default function Knap({ produkt }) {
-  const [valgtStoerrelse, setValgtStoerrelse] = useState("");
-  const { tilføjTilKurv } = useKurv();
+  const [valgtStoerrelse, setValgtStoerrelse] = useState(""); // Gemmer valgt størrelse fra dropdown
+  const { tilføjTilKurv } = useKurv(); // Henter funktion fra KurvContext til at tilføje varer
 
   const handleClick = () => {
+    // Hvis der ikke er valgt størrelse, gør ingenting
     if (!valgtStoerrelse) return;
 
+    // Vælg pris ud fra valgt størrelse
     const pris =
       valgtStoerrelse === "S"
         ? produkt.price_s
@@ -17,6 +18,7 @@ export default function Knap({ produkt }) {
         ? produkt.price_m
         : produkt.price_l;
 
+    // Tilføj produkt til kurv med de relevante oplysninger
     tilføjTilKurv({
       id: produkt.id,
       navn: produkt.name,
@@ -25,11 +27,13 @@ export default function Knap({ produkt }) {
       antal: 1,
     });
 
+    // Nulstil valg efter tilføjelse
     setValgtStoerrelse("");
   };
 
   return (
     <div className="flex items-center gap-2 font-libre">
+      {/* Dropdown til valg af størrelse */}
       <select
         value={valgtStoerrelse}
         onChange={(e) => setValgtStoerrelse(e.target.value)}
@@ -41,14 +45,16 @@ export default function Knap({ produkt }) {
         <option value="L">STOR - {produkt.price_l} kr</option>
       </select>
 
+      {/* Knap til at tilføje til kurv */}
       <button
         onClick={handleClick}
-        disabled={!valgtStoerrelse}
+        disabled={!valgtStoerrelse} // Deaktiveret indtil en størrelse er valgt
         className={`px-3 py-1 rounded text-[var(--baggrundsfarve)] white ${
-          valgtStoerrelse ? "min-knap" : "min-knap1"
+          valgtStoerrelse ? "min-knap" : "min-knap1" // Brug forskellig styling alt efter om der er valgt størrelse
         }`}
       >
-        {valgtStoerrelse ? "LÆG I KURV" : "VÆLG STØRRELSE"}
+        {valgtStoerrelse ? "LÆG I KURV" : "VÆLG STØRRELSE"}{" "}
+        {/* Skift tekst afhængigt af om der er valgt størrelse */}
       </button>
     </div>
   );

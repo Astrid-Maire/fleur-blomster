@@ -7,7 +7,9 @@ import Baggrundsbillede from "./components/Baggrundsbillede";
 import Scroll from "./components/Scroll";
 
 export default function Home() {
+  // State til at vise nyhedsbrevformularen
   const [showForm, setShowForm] = useState(false);
+  // State til at registrere om popup'en er lukket
   const [popupClosed, setPopupClosed] = useState(false);
 
   return (
@@ -30,17 +32,21 @@ export default function Home() {
       </div>
 
       <div>
+        {/* Hvis popup IKKE er lukket OG formularen IKKE vises: vis popup */}
         {!popupClosed && !showForm && (
           <NewsletterPopup
-            onClose={() => setPopupClosed(true)}
-            onSubscribe={() => setShowForm(true)}
+            onClose={() => setPopupClosed(true)} // Luk popup ved klik på luk
+            onSubscribe={() => setShowForm(true)} // Vis formular ved tilmelding
           />
         )}
+
+        {/* Hvis formularen skal vises: vis modal med formular */}
         {showForm && (
           <div className="fixed inset-0 z-50 flex items-center justify-center ">
             <NewsletterForm onSuccess={() => setShowForm(false)} />
           </div>
         )}
+
         <h2 className="text-2xl sm:text-3xl md:text-4xl mt-[var(--space-2xs)] leading-tight">
           <span className="block sm:hidden ">VELKOMMEN TIL FLEUR BLOMSTER</span>
           <span className="hidden sm:block">
@@ -67,7 +73,6 @@ export default function Home() {
             os til at dele vores passion for blomster med dig.
           </p>
         </div>
-
         <Baggrundsbillede />
         <div className="container-1">
           <h3 className="text-4xl  mt-var(--space-xs) ">

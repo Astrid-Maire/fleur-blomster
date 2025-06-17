@@ -1,5 +1,4 @@
 "use client";
-
 import Image from "next/image";
 import Valgmulighed from "@/app/components/Valgmulighed";
 import Anledninghovedbilleder from "@/app/components/Anledninghovedbilleder";
@@ -19,14 +18,12 @@ export default function Home() {
           className="object-cover"
           priority
         />
-
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center w-full px-4">
           <h2 className="text-xl sm:text-3xl md:text-4xl ">
             WEBSHOP TIL FLEUR BLOMSTER
           </h2>
         </div>
       </div>
-
       <div className="p-6  px-4">
         <h2 className="text-2xl sm:text-4xl ">
           BLOMSTER TIL EN <br />
@@ -73,7 +70,6 @@ export default function Home() {
           </div>
         </div>
       </div>
-
       <Anledninghovedbilleder />
     </>
   );

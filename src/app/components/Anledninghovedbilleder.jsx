@@ -1,6 +1,9 @@
+// Importerer Next.js' optimerede Image-komponent
 import Image from "next/image";
 
+// Exporterer en React-komponent med navn Abledninghovedbilleder
 export default function Abledninghovedbilleder() {
+  // Array med billedstier
   const images = [
     "/images/blomster2.jpg",
     "/images/blomster4.jpg",
@@ -15,6 +18,7 @@ export default function Abledninghovedbilleder() {
           sm:overflow-visible
         "
       >
+        {/* Mapper billederne ud i hver sin container */}
         {images.map((src, index) => (
           <div
             key={index}
@@ -27,7 +31,7 @@ export default function Abledninghovedbilleder() {
               alt={`Fleur blomster ${index + 1}`}
               fill
               className="object-cover rounded-lg"
-              priority={index === 0}
+              priority={index === 0} // Det første billede får prioritet i indlæsning
             />
           </div>
         ))}

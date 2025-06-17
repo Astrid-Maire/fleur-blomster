@@ -2,27 +2,36 @@
 import { useEffect, useState } from "react";
 
 const NewsletterPopup = ({ onClose, onSubscribe }) => {
+  // State til at styre om popuppen er synlig eller ej
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
+    // Tjekker om brugeren allerede har set popuppen ved at læse fra localStorage
     const hasSeenPopup = localStorage.getItem("newsletterPopupSeen");
     if (!hasSeenPopup) {
+      // Hvis ikke set før, vis popuppen
       setIsVisible(true);
     }
-  }, []);
+  }, []); // Kører kun én gang når komponenten mountes
 
   const handleClose = () => {
+    // Gem i localStorage at brugeren har set popuppen, så den ikke vises igen
     localStorage.setItem("newsletterPopupSeen", "true");
+    // Skjul popuppen
     setIsVisible(false);
+    // Kald den funktion som blev sendt med fra parent-komponenten når popup lukkes
     onClose();
   };
 
   const handleSubscribe = () => {
+    // Samme som handleClose, men bruges når brugeren tilmelder sig
     localStorage.setItem("newsletterPopupSeen", "true");
     setIsVisible(false);
+    // Kald den funktion som blev sendt med fra parent-komponenten når man tilmelder sig
     onSubscribe();
   };
 
+  // Hvis popuppen ikke skal vises, returner null og render ikke noget
   if (!isVisible) return null;
 
   return (
@@ -47,7 +56,7 @@ const NewsletterPopup = ({ onClose, onSubscribe }) => {
         <div className="flex  flex-row justify-center gap-4 mt-4">
           <button
             onClick={handleClose}
-            className="bg-gray-300 text-[var(--tekstfarve)] ] py-1 md:py-2 rounded-lg px-2 hover:bg-gray-400"
+            className="bg-gray-300 text-[var(--tekstfarve)] py-1 md:py-2 rounded-lg px-2 hover:bg-gray-400"
           >
             MÅSKE SENERE
           </button>

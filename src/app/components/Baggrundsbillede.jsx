@@ -1,12 +1,14 @@
 import Image from "next/image";
+// Importerer useRef hook fra React og animationsværktøjer fra framer-motion
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 
 export default function InspirationSection() {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const ref = useRef(null); //ref der overvåges hvornår brugerne kommer ned på siden
+  const isInView = useInView(ref, { once: true, margin: "-100px" }); // Tjekker om elementet bruges til animation
 
   return (
+    // Yderste container med minimumshøjde og positionering, samt ref til useInView
     <div className="relative w-full min-h-[800px]" ref={ref}>
       <Image
         src="/images/forsidehovedbilledet.png"
@@ -16,10 +18,9 @@ export default function InspirationSection() {
         priority
       />
       <div className="relative z-10 p-[var(--space-m)]">
-        <h3 className="pl-[var(--space-l)] pb-[var(--space-m)] pt-[var(--space-l)]   ">
+        <h3 className="pl-[var(--space-l)] pb-[var(--space-m)] pt-[var(--space-l)]">
           INSPIRATION TIL DIG
         </h3>
-
         <div className="flex flex-col-reverse md:flex-row gap-8">
           <div className="flex-1 flex flex-col gap-6">
             <p className="pl-[var(--space-l)] text-justify">
@@ -32,7 +33,6 @@ export default function InspirationSection() {
               og give dig lyst til at udforske, hvordan blomster kan løfte både
               rum og sind.
             </p>
-
             <p className="pl-[var(--space-l)] text-justify">
               Uanset om du er på udkig efter en personlig gave, noget særligt
               til bordet eller bare ønsker at glæde dig selv, kan du finde nye
@@ -42,22 +42,23 @@ export default function InspirationSection() {
               en forskel. Lad dig inspirere og find det, der blomstrer for dig.
             </p>
           </div>
-
           <div className="flex-1 relative min-h-[400px]">
+            {/* Første billede (L) – vises med forsinket fade-in og bevægelse */}
             <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ delay: 0.2, duration: 0.6 }}
+              initial={{ opacity: 0, y: 50 }} // Start: usynlig og nede
+              animate={isInView ? { opacity: 1, y: 0 } : {}} // Når synlig: fade ind og løft op
+              transition={{ delay: 0.2, duration: 0.6 }} // Forsinkelse og varighed
               className="absolute left-1/2 top-[20px] transform -translate-x-1/2 w-52 h-80 md:w-64 md:h-96 rotate-[5deg] z-10"
             >
               <Image
                 src="/images/l.png"
                 alt="Billede L"
                 fill
-                className="object-cover shadow-xl"
+                className="object-cover shadow-xl" // Skyggeeffekt og billede tilpasset container
               />
             </motion.div>
 
+            {/* Andet billede (M) – med lidt længere forsinkelse */}
             <motion.div
               initial={{ opacity: 0, y: 50 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -72,6 +73,7 @@ export default function InspirationSection() {
               />
             </motion.div>
 
+            {/* Tredje billede (S) – endnu længere forsinkelse */}
             <motion.div
               initial={{ opacity: 0, y: 50 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}

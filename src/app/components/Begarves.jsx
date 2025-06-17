@@ -13,6 +13,7 @@ const FlowerGallery = () => {
   return (
     <div className="flex flex-col gap-1 md:gap-4 md:pb-[var(--space-s)] md:py-0 py-[var(--space-xs)] md:px-[var(--space-xl)] ">
       <div className="grid grid-cols-20 gap-1 md:gap-4">
+        {/* Første billede (stort) – fylder 12 ud af 20 kolonner */}
         <div className="col-span-12">
           <Image
             src={flowers[0].src}
@@ -22,6 +23,7 @@ const FlowerGallery = () => {
             className="w-full h-auto object-cover"
           />
         </div>
+        {/* Andet billede (mindre) – fylder 8 ud af 20 kolonner */}
         <div className="col-span-8">
           <Image
             src={flowers[1].src}
@@ -34,6 +36,7 @@ const FlowerGallery = () => {
       </div>
 
       <div className="grid grid-cols-30 gap-1 md:gap-4">
+        {/* Tredje billede – 11 ud af 30 kolonner */}
         <div className="col-span-11">
           <Image
             src={flowers[2].src}
@@ -43,6 +46,7 @@ const FlowerGallery = () => {
             className="w-full h-auto object-cover"
           />
         </div>
+        {/* Fjerde billede – 11 ud af 30 kolonner */}
         <div className="col-span-11">
           <Image
             src={flowers[3].src}
@@ -52,6 +56,7 @@ const FlowerGallery = () => {
             className="w-full h-auto object-cover"
           />
         </div>
+        {/* Femte billede – 8 ud af 30 kolonner */}
         <div className="col-span-8">
           <Image
             src={flowers[4].src}

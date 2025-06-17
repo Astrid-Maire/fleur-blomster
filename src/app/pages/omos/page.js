@@ -15,20 +15,18 @@ export default function Home() {
           className="object-cover"
           priority
         />
-
         <div className="absolute top-2/5 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center w-full px-4">
           <h2>OM FLEUR BLOMSTER </h2>
         </div>
       </div>
-
-      <div className="">
-        <div className="px-[var(--space-xl)] pt-[var(--space--m)] ">
-          <h3 className="text-2xl sm:text-3xl md:text-4xl mt-[var(--space-xl)] mb-[var(--space-xl)] leading-tight ">
-            <span className="block sm:hidden ">
+      <div>
+        <div className="px-[var(--space-xl)] pt-[var(--space--m)]">
+          <h3 className="text-2xl sm:text-3xl md:text-4xl mt-[var(--space-xl)] mb-[var(--space-xl)] leading-tight">
+            <span className="block sm:hidden">
               FLEUR BLOMSTER SKABER SMUKKE ØJEBLIKKE
             </span>
             <span className="hidden sm:block">
-              FLUER BLOMSTER SKABER
+              FLEUR BLOMSTER SKABER
               <br />
               <span className="block text-right">SMUKKE ØJEBLIKKE</span>
             </span>

@@ -8,25 +8,32 @@ const supabaseKey =
 const supabase = createClient(supabaseUrl, supabaseKey);
 
 export default function NewsletterForm({ onSuccess }) {
+  // State til input felter
   const [formData, setFormData] = useState({ name: "", email: "" });
+  // State til at vise om formularen loader (ventetid)
   const [loading, setLoading] = useState(false);
+  // State til eventuelle fejlbeskeder
   const [error, setError] = useState("");
 
+  // Funktion til at opdatere formData når brugeren skriver i inputfelterne
   const handleChange = (e) => {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
+  // Funktion der håndterer formularens submit
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    setLoading(true);
-    setError("");
+    e.preventDefault(); // Forhindrer siden i at reloade ved submit
+    setLoading(true); // Sæt loading til true for at vise at vi arbejder
+    setError(""); // Nulstil tidligere fejl
 
+    // Simpel validering: tjek at navn og email er udfyldt
     if (!formData.name || !formData.email) {
       setError("Du skal venligst udfyld både navn og email.");
       setLoading(false);
-      return;
+      return; // Stop funktionen hvis fejl
     }
 
+    // Forsøg at indsætte data i Supabase-tabellen "newsletter_signups"
     const { data, error } = await supabase.from("newsletter_signups").insert([
       {
         name: formData.name,
@@ -35,14 +42,17 @@ export default function NewsletterForm({ onSuccess }) {
     ]);
 
     if (error) {
+      // Hvis der opstår en fejl ved indsættelsen, log og vis fejl til bruger
       console.error("Supabase insert error:", error);
       setError("Noget gik galt. Prøv igen senere.");
     } else {
+      // Hvis indsættelsen lykkedes, nulstil formularen
       setFormData({ name: "", email: "" });
+      // Hvis onSuccess funktion er sendt som prop, kald den (f.eks. til at lukke popup eller vise takke-besked)
       if (onSuccess) onSuccess();
     }
 
-    setLoading(false);
+    setLoading(false); // Stop loading uanset succes eller fejl
   };
 
   return (
@@ -86,6 +96,7 @@ export default function NewsletterForm({ onSuccess }) {
             />
           </div>
         </div>
+        {/* Submit-knap, som bliver disabled når loading er true */}
         <button type="submit" disabled={loading} className="min-knap">
           {loading ? "Sender..." : "Tilmeld"}
         </button>

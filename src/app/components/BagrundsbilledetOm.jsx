@@ -1,12 +1,11 @@
 "use client";
-
 import Image from "next/image";
-import { useRef } from "react";
-import { motion, useInView } from "framer-motion";
+import { useRef } from "react"; // Hook til DOM-referencer
+import { motion, useInView } from "framer-motion"; // Animation + synlighedsovervågning
 
 export default function InspirationSection() {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const ref = useRef(null); // Reference til hovedcontaineren
+  const isInView = useInView(ref, { once: true, margin: "-100px" }); // Tjekker om elementet er i view
 
   return (
     <div className="relative w-full min-h-[800px]" ref={ref}>
@@ -17,10 +16,8 @@ export default function InspirationSection() {
         className="object-cover opacity-10 -z-10"
         priority
       />
-
       <div className="relative z-10 px-[var(--space-xl)] mx-auto">
         <h3 className="pb-4 pt-[var(--space-xl)]">INSPIRATION TIL DIG</h3>
-
         <div className="flex flex-col-reverse md:flex-row gap-6 md:gap-15 pb-6 md:pb-0">
           <div className="flex-1 flex flex-col justify-center">
             <p className="text-justify pb-[var(--space-l)]">
@@ -40,12 +37,11 @@ export default function InspirationSection() {
               velkommen hos Fleur – hvor blomster skaber stemning og skønhed.
             </p>
           </div>
-
           <div className="relative md:flex-[0_0_49%] w-full flex items-end justify-center h-[300px] md:h-auto">
             <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ delay: 0.2, duration: 0.6 }}
+              initial={{ opacity: 0, y: 50 }} // Starttilstand
+              animate={isInView ? { opacity: 1, y: 0 } : {}} // Når i view: fade op
+              transition={{ delay: 0.2, duration: 0.6 }} // Animationstid og delay
               className="relative w-full h-full overflow-hidden shadow-xl"
             >
               <Image
@@ -56,6 +52,7 @@ export default function InspirationSection() {
               />
             </motion.div>
 
+            {/* Lille billede, animeres med mere forsink */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}

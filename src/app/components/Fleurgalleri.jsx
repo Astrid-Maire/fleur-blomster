@@ -28,11 +28,12 @@ const images = {
 export default function FleurGalleri() {
   return (
     <div className="gallery-container">
+      {/* Itererer over alle billederne i objektet og renderer ét <Image> pr. entry */}
       {Object.entries(images).map(([key, src]) => (
         <div key={key} className={`item item-${key}`}>
           <Image
             src={src}
-            alt={`Fleur Galleri ${key}`}
+            alt={`Fleur Galleri ${key}`} // Beskrivende alt-tekst
             layout="fill"
             objectFit="cover"
             priority
