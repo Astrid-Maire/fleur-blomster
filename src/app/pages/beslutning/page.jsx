@@ -1,11 +1,12 @@
 "use client";
+import React, { Suspense } from "react";
 import Link from "next/link";
 import Back1 from "@/app/components/Back1";
 import { useSearchParams } from "next/navigation";
 
-export default function Betaling() {
-  const searchParams = useSearchParams(); // Bruger hook til at hente søgeparametre fra URL
-  const flow = searchParams.get("flow"); // Tager værdien af flow-parameteren,
+function BetalingContent() {
+  const searchParams = useSearchParams();
+  const flow = searchParams.get("flow");
 
   return (
     <div
@@ -68,5 +69,13 @@ export default function Betaling() {
         </div>
       </div>
     </div>
+  );
+}
+
+export default function Betaling() {
+  return (
+    <Suspense fallback={<div>Indlæser...</div>}>
+      <BetalingContent />
+    </Suspense>
   );
 }
