@@ -5,9 +5,9 @@ import Image from "next/image";
 export default function Abledninghovedbilleder() {
   // Array med billedstier
   const images = [
-    "/images/blomster2.jpg",
-    "/images/blomster4.jpg",
-    "/images/blomster3.jpg",
+    "/images/blomster2.png",
+    "/images/blomster4.png",
+    "/images/blomster3.png",
   ];
 
   return (
