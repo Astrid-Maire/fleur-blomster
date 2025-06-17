@@ -1,32 +1,37 @@
 "use client";
+
 import "./globals.css";
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
-import { KurvProvider } from "@/app/components/KurvContext"; // Context til indkøbskurv
-import KurvIkon from "@/app/components/KurvIkon"; // Lille kurv-ikon (flydende)
-import KurvMedBetal from "@/app/components/KurvMedBetal"; // Kurv-popup med betaling
-import Head from "next/head";
-import { usePathname } from "next/navigation"; // Bruges til at finde den aktuelle sti
+import { KurvProvider } from "@/app/components/KurvContext";
+import KurvIkon from "@/app/components/KurvIkon";
+import KurvMedBetal from "@/app/components/KurvMedBetal";
+import { usePathname } from "next/navigation";
+import { Libre_Baskerville, Playfair_Display, Poppins } from "next/font/google";
 
-// RootLayout omslutter hele app'en og styrer layoutet på alle sider
+// Importér fonts – ingen variable, bare brug .className senere
+const libre = Libre_Baskerville({ subsets: ["latin"], weight: ["400", "700"] });
+const playfair = Playfair_Display({
+  subsets: ["latin"],
+  weight: ["400", "700"],
+});
+const poppins = Poppins({ subsets: ["latin"], weight: ["400", "700"] });
+
 export default function RootLayout({ children }) {
-  const pathname = usePathname(); // Finder den aktuelle sti (f.eks. "/pages/bestil")
-
-  // Viser kurv-ikonet på alle sider undtagen "pages/bestil"
+  const pathname = usePathname();
   const visKurvIkon = pathname !== "pages/bestil";
 
   return (
     <html lang="da">
-      <Head>
+      <head>
         <title>Fleur blomster</title>
-      </Head>
-      <body className="antialiased relative">
-        {/* KurvProvider gør det muligt at tilgå kurvdata globalt */}
+      </head>
+      <body className={`${poppins.className} antialiased relative`}>
         <KurvProvider>
           <Header />
-          {children} {/* Indhold fra de enkelte sider */}
-          {visKurvIkon && <KurvIkon />} {/* Kurv-ikon vises dynamisk */}
-          <KurvMedBetal /> {/* Fast kurvkomponent */}
+          {children}
+          {visKurvIkon && <KurvIkon />}
+          <KurvMedBetal />
           <Footer />
         </KurvProvider>
       </body>
